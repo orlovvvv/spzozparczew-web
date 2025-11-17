@@ -164,7 +164,7 @@ export function DevToolsThemeSwitcher() {
       {isOpen && (
         <div
           className={cn(
-            "w-72 rounded-xl border bg-popover/95 p-4 shadow-2xl backdrop-blur-md",
+            "w-80 rounded-xl border bg-popover/95 p-4 shadow-2xl backdrop-blur-md",
             "animate-in slide-in-from-bottom-2 fade-in-0 duration-200",
             "dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] dark:border-border/50",
             "high-contrast:border-2 high-contrast:border-foreground",
@@ -201,7 +201,7 @@ export function DevToolsThemeSwitcher() {
                   type="button"
                   onClick={() => handleThemeChange(option.value)}
                   className={cn(
-                    "flex w-full items-center gap-3 rounded-lg p-3 text-left transition-all duration-200",
+                    "flex w-full items-center gap-3 rounded-lg p-3 text-left transition-all duration-200 min-h-[68px]",
                     "hover:bg-accent hover:scale-[1.02] active:scale-[0.98]",
                     isActive
                       ? "bg-primary/10 ring-2 ring-primary/50"
@@ -210,7 +210,7 @@ export function DevToolsThemeSwitcher() {
                 >
                   <div
                     className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
+                      "flex h-10 w-10 items-center justify-center rounded-lg transition-colors shrink-0",
                       isActive
                         ? "bg-primary text-primary-foreground"
                         : "bg-background",
@@ -218,16 +218,18 @@ export function DevToolsThemeSwitcher() {
                   >
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="font-medium">{option.label}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-medium text-sm">
+                        {option.label}
+                      </span>
                       {isActive && (
-                        <span className="rounded-full bg-primary px-2 py-0.5 text-xs font-medium text-primary-foreground">
+                        <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] font-medium text-primary-foreground shrink-0">
                           Aktywny
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground mt-0.5">
                       {option.description}
                       {isResolved && ` (${resolvedTheme})`}
                     </p>
