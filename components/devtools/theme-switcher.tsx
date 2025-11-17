@@ -75,6 +75,15 @@ export function DevToolsThemeSwitcher() {
     async (newTheme: string) => {
       if (!buttonRef.current || !document.startViewTransition) {
         setTheme(newTheme)
+        // Announce theme change to screen readers
+        const themeLabel = themeOptions.find(opt => opt.value === newTheme)?.label || newTheme
+        const announcement = document.createElement('div')
+        announcement.setAttribute('role', 'status')
+        announcement.setAttribute('aria-live', 'polite')
+        announcement.className = 'sr-only'
+        announcement.textContent = `Motyw zmieniony na ${themeLabel}`
+        document.body.appendChild(announcement)
+        setTimeout(() => announcement.remove(), 1000)
         return
       }
 
@@ -107,8 +116,27 @@ export function DevToolsThemeSwitcher() {
             pseudoElement: "::view-transition-new(root)",
           }
         )
+
+        // Announce theme change to screen readers
+        const themeLabel = themeOptions.find(opt => opt.value === newTheme)?.label || newTheme
+        const announcement = document.createElement('div')
+        announcement.setAttribute('role', 'status')
+        announcement.setAttribute('aria-live', 'polite')
+        announcement.className = 'sr-only'
+        announcement.textContent = `Motyw zmieniony na ${themeLabel}`
+        document.body.appendChild(announcement)
+        setTimeout(() => announcement.remove(), 1000)
       } catch {
         setTheme(newTheme)
+        // Announce theme change to screen readers
+        const themeLabel = themeOptions.find(opt => opt.value === newTheme)?.label || newTheme
+        const announcement = document.createElement('div')
+        announcement.setAttribute('role', 'status')
+        announcement.setAttribute('aria-live', 'polite')
+        announcement.className = 'sr-only'
+        announcement.textContent = `Motyw zmieniony na ${themeLabel}`
+        document.body.appendChild(announcement)
+        setTimeout(() => announcement.remove(), 1000)
       }
     },
     [setTheme]
