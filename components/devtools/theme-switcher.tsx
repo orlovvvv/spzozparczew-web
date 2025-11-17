@@ -66,6 +66,18 @@ export function DevToolsThemeSwitcher() {
   }, []);
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "t") {
+        event.preventDefault();
+        setIsOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [setIsOpen]);
+
+  useEffect(() => {
     if (mounted) {
       localStorage.setItem("devtools-panel-open", JSON.stringify(isOpen));
     }
