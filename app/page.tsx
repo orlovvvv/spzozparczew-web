@@ -10,7 +10,6 @@ import {
   Activity,
   Brain,
   Briefcase,
-  Check,
   ChevronDown,
   Clock,
   ExternalLink,
