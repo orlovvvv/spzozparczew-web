@@ -32,10 +32,7 @@ interface BentoServiceCardProps extends ComponentPropsWithoutRef<"div"> {
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
-      className={cn(
-        "grid w-full auto-rows-auto grid-cols-3 gap-4",
-        className,
-      )}
+      className={cn("grid w-full auto-rows-auto grid-cols-3 gap-4", className)}
       {...props}
     >
       {children}
@@ -71,9 +68,7 @@ const BentoCard = ({
     <div className="p-4">
       <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
         <Icon className="h-12 w-12 origin-left transform-gpu text-foreground transition-all duration-300 ease-in-out group-hover:scale-75" />
-        <h3 className="text-xl font-semibold text-foreground">
-          {name}
-        </h3>
+        <h3 className="text-xl font-semibold text-foreground">{name}</h3>
         <p className="max-w-lg text-muted-foreground">{description}</p>
       </div>
 
@@ -98,7 +93,7 @@ const BentoCard = ({
 
     <div
       className={cn(
-        "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:flex",
+        "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 lg:flex",
       )}
     >
       <Button
