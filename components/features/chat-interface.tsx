@@ -27,7 +27,7 @@ export function ChatInterface() {
   return (
     <Card className="rounded-2xl border-border bg-card shadow-xl shadow-foreground/10 flex flex-col min-h-[400px] sm:min-h-[450px]">
       <ScrollArea className="flex-1 p-4 sm:p-6">
-        <div className="space-y-4" aria-live="polite">
+        <div className="space-y-4" aria-live="polite" lang="pl">
           <BotMessage>
             <p className="text-base text-card-foreground leading-relaxed">
               Witaj! Jestem asystentem informacyjnym SPZOZ Parczew. Mogę

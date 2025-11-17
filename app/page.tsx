@@ -211,6 +211,7 @@ function HeroSection() {
                       aria-live="polite"
                       aria-atomic="false"
                       aria-label="Historia rozmowy z asystentem"
+                      lang="pl"
                     >
                       <div className="space-y-3">
                         {messages.map((message) => (

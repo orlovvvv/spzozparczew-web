@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "SPZOZ Parczew – Szpital Powiatowy",
   description:
     "SPZOZ Parczew – informacje dla pacjentów, godziny otwarcia, poradnie, usługi, aktualności.",
+  other: {
+    "Content-Language": "pl",
+  },
 };
 
 export default function RootLayout({
