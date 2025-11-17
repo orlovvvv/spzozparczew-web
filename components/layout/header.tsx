@@ -74,7 +74,7 @@ function ListItem({
             className,
           )}
         >
-          <div className="text-sm font-medium leading-none text-foreground">
+          <div className="text-sm font-medium leading-none text-foreground group-hover:text-current">
             {title}
           </div>
           {children && (
