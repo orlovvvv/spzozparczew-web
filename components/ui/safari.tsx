@@ -53,15 +53,36 @@ export function Safari({
             height: `${HEIGHT_PCT}%`,
           }}
         >
-          <video
-            className="block size-full object-cover"
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-          />
+          <section
+            aria-label="Video demonstration of hospital website features"
+            aria-describedby="safari-video-desc"
+          >
+            <video
+              className="block size-full object-cover"
+              src={videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Demonstracja funkcji strony szpitala"
+            >
+              <track
+                kind="captions"
+                src="/captions-pl.vtt"
+                srcLang="pl"
+                label="Polski"
+              />
+              <p>
+                Twoja przeglądarka nie obsługuje HTML5 video. Użyj nowoczesnej
+                przeglądarki.
+              </p>
+            </video>
+            <div id="safari-video-desc" className="sr-only">
+              To wideo demonstruje główne funkcje strony internetowej szpitala,
+              w tym nawigację, informacje o usługach i opcje kontaktu.
+            </div>
+          </section>
         </div>
       )}
 
