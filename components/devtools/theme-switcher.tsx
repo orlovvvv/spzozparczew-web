@@ -202,7 +202,7 @@ export function DevToolsThemeSwitcher() {
                   onClick={() => handleThemeChange(option.value)}
                   className={cn(
                     "flex w-full items-center gap-3 rounded-lg p-3 text-left transition-all duration-200 min-h-[68px]",
-                    "hover:bg-accent hover:scale-[1.02] active:scale-[0.98]",
+                    "hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] active:scale-[0.98]",
                     isActive
                       ? "bg-primary/10 ring-2 ring-primary/50"
                       : "bg-muted/50",
@@ -213,7 +213,7 @@ export function DevToolsThemeSwitcher() {
                       "flex h-10 w-10 items-center justify-center rounded-lg transition-colors shrink-0",
                       isActive
                         ? "bg-primary text-primary-foreground"
-                        : "bg-background",
+                        : "bg-background group-hover:bg-accent-foreground group-hover:text-accent",
                     )}
                   >
                     <Icon className="h-5 w-5" />
