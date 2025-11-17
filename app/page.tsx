@@ -231,7 +231,16 @@ function HeroSection() {
                                   : "bg-white/80 dark:bg-neutral-800 high-contrast:bg-surface-container-low backdrop-blur-sm text-foreground rounded-bl-sm high-contrast:backdrop-blur-none"
                               }`}
                             >
-                              <p className="whitespace-pre-line text-left leading-relaxed">
+                              <span className="sr-only">
+                                {message.type === "user" ? "Ty:" : "Asystent:"}
+                              </span>
+                              <p className="whitespace-pre-line text-left leading-relaxed flex items-start gap-2">
+                                <span
+                                  aria-hidden="true"
+                                  className="text-xs opacity-70"
+                                >
+                                  {message.type === "user" ? "▶" : "◀"}
+                                </span>
                                 {message.content}
                               </p>
                             </div>
@@ -252,6 +261,7 @@ function HeroSection() {
                     type="text"
                     id="hero-search"
                     name="pytanie"
+                    autoComplete="off"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder={
