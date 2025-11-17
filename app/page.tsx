@@ -236,10 +236,13 @@ function HeroSection() {
               <div className="space-y-3">
                 {messages.length > 0 && (
                   <>
-                    <div className="lg:hidden text-center mb-2">
-                      <h2 className="text-lg font-semibold text-foreground">
+                    <div
+                      aria-label="Asystent SPZOZ - Nie udzielam porad medycznych"
+                      className="lg:hidden text-center mb-2"
+                    >
+                      <p className="text-lg font-semibold text-foreground">
                         Asystent SPZOZ
-                      </h2>
+                      </p>
                       <p className="text-xs text-muted-foreground/80">
                         Nie udzielam porad medycznych
                       </p>
@@ -1388,6 +1391,24 @@ export default function Home() {
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:bg-white focus:text-slate-900 rounded-md px-4 py-2"
       >
         Przejdź do treści głównej
+      </Link>
+      <Link
+        href="#main-navigation"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:bg-white focus:text-slate-900 rounded-md px-4 py-2"
+      >
+        Przejdź do nawigacji głównej
+      </Link>
+      <Link
+        href="#dla-pacjentow"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:bg-white focus:text-slate-900 rounded-md px-4 py-2"
+      >
+        Przejdź do informacji dla pacjentów
+      </Link>
+      <Link
+        href="#kontakt"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:bg-white focus:text-slate-900 rounded-md px-4 py-2"
+      >
+        Przejdź do kontaktu
       </Link>
 
       <div className="flex-1 flex flex-col">

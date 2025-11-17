@@ -1,5 +1,9 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useTheme } from "next-themes";
+import { flushSync } from "react-dom";
 import {
   Contrast,
   Monitor,
@@ -9,11 +13,9 @@ import {
   Sun,
   X,
 } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal, flushSync } from "react-dom";
-import { Button } from "@/components/ui/button";
+
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface ThemeOption {
   value: string;

@@ -90,7 +90,7 @@ function ListItem({
 
 export function Header() {
   return (
-    <div className="relative z-40">
+    <header role="banner" className="relative z-40">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
         <Link
           href="/"
@@ -116,7 +116,11 @@ export function Header() {
           </span>
         </Link>
 
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu
+          id="main-navigation"
+          className="hidden lg:flex"
+          aria-label="Nawigacja główna"
+        >
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-white/60 backdrop-blur-xl dark:bg-white/10 high-contrast:bg-background high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 focus:bg-white/80 dark:focus:bg-white/20 data-[state=open]:bg-white/80 dark:data-[state=open]:bg-white/20 border border-white/40 dark:border-white/20 high-contrast:border-foreground shadow-sm">
@@ -340,6 +344,6 @@ export function Header() {
           </Sheet>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
