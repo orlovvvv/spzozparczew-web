@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react"
-import { createPortal } from "react-dom"
-import { useTheme } from "next-themes"
-import { flushSync } from "react-dom"
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { useTheme } from "next-themes";
+import { flushSync } from "react-dom";
 import {
   Contrast,
   Monitor,
@@ -12,16 +12,16 @@ import {
   Settings,
   Sun,
   X,
-} from "lucide-react"
+} from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface ThemeOption {
-  value: string
-  label: string
-  icon: React.ElementType
-  description: string
+  value: string;
+  label: string;
+  icon: React.ElementType;
+  description: string;
 }
 
 const themeOptions: ThemeOption[] = [
@@ -49,50 +49,50 @@ const themeOptions: ThemeOption[] = [
     icon: Monitor,
     description: "Według systemu",
   },
-]
+];
 
 export function DevToolsThemeSwitcher() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setMounted(true)
-    const saved = localStorage.getItem("devtools-panel-open")
+    setMounted(true);
+    const saved = localStorage.getItem("devtools-panel-open");
     if (saved) {
-      setIsOpen(JSON.parse(saved))
+      setIsOpen(JSON.parse(saved));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem("devtools-panel-open", JSON.stringify(isOpen))
+      localStorage.setItem("devtools-panel-open", JSON.stringify(isOpen));
     }
-  }, [isOpen, mounted])
+  }, [isOpen, mounted]);
 
   const handleThemeChange = useCallback(
     async (newTheme: string) => {
       if (!buttonRef.current || !document.startViewTransition) {
-        setTheme(newTheme)
-        return
+        setTheme(newTheme);
+        return;
       }
 
       try {
         await document.startViewTransition(() => {
           flushSync(() => {
-            setTheme(newTheme)
-          })
-        }).ready
+            setTheme(newTheme);
+          });
+        }).ready;
 
         const { top, left, width, height } =
-          buttonRef.current.getBoundingClientRect()
-        const x = left + width / 2
-        const y = top + height / 2
+          buttonRef.current.getBoundingClientRect();
+        const x = left + width / 2;
+        const y = top + height / 2;
         const maxRadius = Math.hypot(
           Math.max(left, window.innerWidth - left),
-          Math.max(top, window.innerHeight - top)
-        )
+          Math.max(top, window.innerHeight - top),
+        );
 
         document.documentElement.animate(
           {
@@ -105,16 +105,16 @@ export function DevToolsThemeSwitcher() {
             duration: 400,
             easing: "ease-in-out",
             pseudoElement: "::view-transition-new(root)",
-          }
-        )
+          },
+        );
       } catch {
-        setTheme(newTheme)
+        setTheme(newTheme);
       }
     },
-    [setTheme]
-  )
+    [setTheme],
+  );
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   const panelContent = (
     <div className="fixed bottom-4 right-4 z-[9999] flex flex-col items-end gap-3">
@@ -124,7 +124,7 @@ export function DevToolsThemeSwitcher() {
             "w-72 rounded-xl border bg-popover/95 p-4 shadow-2xl backdrop-blur-md",
             "animate-in slide-in-from-bottom-2 fade-in-0 duration-200",
             "dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] dark:border-border/50",
-            "high-contrast:border-2 high-contrast:border-foreground"
+            "high-contrast:border-2 high-contrast:border-foreground",
           )}
         >
           <div className="mb-4 flex items-center justify-between">
@@ -145,12 +145,12 @@ export function DevToolsThemeSwitcher() {
 
           <div className="space-y-2">
             {themeOptions.map((option) => {
-              const Icon = option.icon
-              const isActive = theme === option.value
+              const Icon = option.icon;
+              const isActive = theme === option.value;
               const isResolved =
                 option.value === "system" && theme === "system"
                   ? resolvedTheme === option.value
-                  : false
+                  : false;
 
               return (
                 <button
@@ -162,7 +162,7 @@ export function DevToolsThemeSwitcher() {
                     "hover:bg-accent hover:scale-[1.02] active:scale-[0.98]",
                     isActive
                       ? "bg-primary/10 ring-2 ring-primary/50"
-                      : "bg-muted/50"
+                      : "bg-muted/50",
                   )}
                 >
                   <div
@@ -170,7 +170,7 @@ export function DevToolsThemeSwitcher() {
                       "flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
                       isActive
                         ? "bg-primary text-primary-foreground"
-                        : "bg-background"
+                        : "bg-background",
                     )}
                   >
                     <Icon className="h-5 w-5" />
@@ -190,7 +190,7 @@ export function DevToolsThemeSwitcher() {
                     </p>
                   </div>
                 </button>
-              )
+              );
             })}
           </div>
 
@@ -225,13 +225,13 @@ export function DevToolsThemeSwitcher() {
           "bg-background/95 backdrop-blur-sm",
           "dark:shadow-[0_0_30px_rgba(0,0,0,0.3)]",
           "high-contrast:border-2 high-contrast:border-foreground",
-          isOpen && "rotate-90"
+          isOpen && "rotate-90",
         )}
       >
         <Settings
           className={cn(
             "h-5 w-5 transition-transform duration-300",
-            isOpen && "rotate-90"
+            isOpen && "rotate-90",
           )}
         />
         <span className="sr-only">
@@ -239,7 +239,7 @@ export function DevToolsThemeSwitcher() {
         </span>
       </Button>
     </div>
-  )
+  );
 
-  return createPortal(panelContent, document.body)
+  return createPortal(panelContent, document.body);
 }
