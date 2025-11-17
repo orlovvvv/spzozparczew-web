@@ -129,7 +129,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4 high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:focus:bg-primary high-contrast:focus:text-primary-foreground high-contrast:focus-visible:ring-primary high-contrast:text-foreground",
+        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4 high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:hover:[&_svg:not([class*='text-'])]:text-primary-foreground high-contrast:focus:bg-primary high-contrast:focus:text-primary-foreground high-contrast:focus:[&_svg:not([class*='text-'])]:text-primary-foreground high-contrast:focus-visible:ring-primary high-contrast:text-foreground",
         className,
       )}
       {...props}

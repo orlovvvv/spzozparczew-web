@@ -201,7 +201,7 @@ export function DevToolsThemeSwitcher() {
                   type="button"
                   onClick={() => handleThemeChange(option.value)}
                   className={cn(
-                    "flex w-full items-center gap-3 rounded-lg p-3 text-left transition-all duration-200 min-h-[68px]",
+                    "group flex w-full items-center gap-3 rounded-lg p-3 text-left transition-all duration-200 min-h-[68px]",
                     "hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] active:scale-[0.98]",
                     isActive
                       ? "bg-primary/10 ring-2 ring-primary/50"
@@ -229,7 +229,7 @@ export function DevToolsThemeSwitcher() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-muted-foreground mt-0.5">
+                    <p className="text-xs text-muted-foreground group-hover:text-accent-foreground mt-0.5">
                       {option.description}
                       {isResolved && ` (${resolvedTheme})`}
                     </p>
