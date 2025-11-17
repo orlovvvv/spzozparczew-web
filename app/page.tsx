@@ -10,7 +10,6 @@ import {
   Activity,
   Brain,
   Briefcase,
-  Check,
   ChevronDown,
   Clock,
   ExternalLink,
@@ -75,6 +74,7 @@ function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [inputError, setInputError] = useState("");
   const [announcement, setAnnouncement] = useState("");
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -104,9 +104,47 @@ function HeroSection() {
     setTimeout(() => setAnnouncement(""), 100);
   };
 
+  const validateInput = (value: string): string => {
+    const trimmedValue = value.trim();
+
+    if (trimmedValue.length === 0) {
+      return "Pole pytania nie może być puste";
+    }
+
+    if (trimmedValue.length < 3) {
+      return "Pytanie musi zawierać co najmniej 3 znaki";
+    }
+
+    return "";
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    // Clear error when user starts typing
+    if (inputError) {
+      setInputError("");
+    }
+  };
+
+  const handleInputBlur = () => {
+    if (inputValue.trim().length > 0) {
+      const error = validateInput(inputValue);
+      setInputError(error);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+
+    const error = validateInput(inputValue);
+    if (error) {
+      setInputError(error);
+      setAnnouncement(error);
+      setTimeout(() => setAnnouncement(""), 100);
+      return;
+    }
 
     const userMessage: ChatMessage = {
       id: `user-${Date.now()}`,
@@ -121,6 +159,7 @@ function HeroSection() {
     };
     setMessages((prev) => [...prev, userMessage, assistantMessage]);
     setInputValue("");
+    setInputError("");
 
     // Announce response to screen readers
     setAnnouncement(`Otrzymano odpowiedź: ${assistantMessage.content}`);
@@ -241,34 +280,56 @@ function HeroSection() {
                     </div>
                   </>
                 )}
-                <form
-                  onSubmit={handleSubmit}
-                  className="flex items-center gap-3"
-                >
-                  <label htmlFor="hero-search" className="sr-only">
-                    Zadaj pytanie o szpital
-                  </label>
-                  <input
-                    type="text"
-                    id="hero-search"
-                    name="pytanie"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder={
-                      messages.length > 0
-                        ? "Wpisz kolejne pytanie..."
-                        : "Wpisz pytanie, np. godziny otwarcia..."
-                    }
-                    className="flex-1 min-w-0 rounded-full border border-outline-variant/40 dark:border-outline/30 high-contrast:border-foreground bg-surface-container/50 dark:bg-surface-container-high/50 high-contrast:bg-surface-container-low backdrop-blur-md px-5 py-3 text-sm text-foreground placeholder-muted-foreground/70 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:border-primary/50 focus-visible:bg-surface-container/60 transition-all duration-medium-2 ease-standard"
-                  />
-                  <Button
-                    type="submit"
-                    size="icon"
-                    className="shrink-0 rounded-full h-11 w-11 shadow-sm"
-                  >
-                    <Send className="h-4 w-4" aria-hidden="true" />
-                    <span className="sr-only">Wyślij pytanie</span>
-                  </Button>
+                <form onSubmit={handleSubmit} className="space-y-2" noValidate>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-1 min-w-0">
+                      <label htmlFor="hero-search" className="sr-only">
+                        Zadaj pytanie o szpital
+                      </label>
+                      <input
+                        type="text"
+                        id="hero-search"
+                        name="pytanie"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                        aria-invalid={inputError ? "true" : "false"}
+                        aria-describedby={
+                          inputError ? "hero-search-error" : undefined
+                        }
+                        aria-required="true"
+                        placeholder={
+                          messages.length > 0
+                            ? "Wpisz kolejne pytanie..."
+                            : "Wpisz pytanie, np. godziny otwarcia..."
+                        }
+                        className={`w-full rounded-full border bg-surface-container/50 dark:bg-surface-container-high/50 high-contrast:bg-surface-container-low backdrop-blur-md px-5 py-3 text-sm text-foreground placeholder-muted-foreground/70 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-medium-2 ease-standard ${
+                          inputError
+                            ? "border-destructive focus-visible:ring-destructive/50 aria-[invalid=true]:ring-destructive/20 dark:aria-[invalid=true]:ring-destructive/40"
+                            : "border-outline-variant/40 dark:border-outline/30 high-contrast:border-foreground focus-visible:border-primary/50 focus-visible:bg-surface-container/60"
+                        }`}
+                      />
+                      {inputError && (
+                        <p
+                          id="hero-search-error"
+                          className="mt-1.5 text-xs text-destructive px-5"
+                          role="alert"
+                          aria-live="polite"
+                        >
+                          {inputError}
+                        </p>
+                      )}
+                    </div>
+                    <Button
+                      type="submit"
+                      size="icon"
+                      className="shrink-0 rounded-full h-11 w-11 shadow-sm"
+                      aria-label="Wyślij pytanie"
+                    >
+                      <Send className="h-4 w-4" aria-hidden="true" />
+                      <span className="sr-only">Wyślij pytanie</span>
+                    </Button>
+                  </div>
                 </form>
                 {messages.length === 0 && (
                   <p className="text-xs font-light text-muted-foreground/80 text-center lg:text-left px-1">
