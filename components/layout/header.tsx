@@ -70,7 +70,7 @@ function ListItem({
         <Link
           href={href}
           className={cn(
-            "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors duration-medium-2 ease-standard hover:bg-accent focus:bg-accent focus:ring-2 focus:ring-primary focus:ring-offset-2",
+            "group block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors duration-medium-2 ease-standard hover:bg-accent focus:bg-accent focus:ring-2 focus:ring-primary focus:ring-offset-2 high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:focus:bg-primary high-contrast:focus:text-primary-foreground",
             className,
           )}
         >
@@ -78,7 +78,7 @@ function ListItem({
             {title}
           </div>
           {children && (
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-current">
               {children}
             </p>
           )}
