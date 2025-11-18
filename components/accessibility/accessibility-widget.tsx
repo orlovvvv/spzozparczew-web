@@ -1,27 +1,25 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { useTheme } from "next-themes";
-import { flushSync } from "react-dom";
 import {
-  Settings,
-  Type,
-  Palette,
-  X,
-  Sun,
-  Moon,
   Contrast,
   Monitor,
+  Moon,
+  Palette,
+  Settings,
+  Sun,
+  Type,
+  X,
 } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { useFontSize } from "@/hooks/use-font-size";
+import { useTheme } from "next-themes";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal, flushSync } from "react-dom";
 import {
   FONT_SIZES,
   type FontSize,
 } from "@/components/providers/font-size-provider";
+import { Button } from "@/components/ui/button";
+import { useFontSize } from "@/hooks/use-font-size";
+import { cn } from "@/lib/utils";
 
 const fontSizeOrder: FontSize[] = [
   "small",

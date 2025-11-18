@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { AccessibilityWidget } from "@/components/accessibility/accessibility-widget";
-import { ThemeProvider } from "@/components/providers/theme-provider";
 import { FontSizeProvider } from "@/components/providers/font-size-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",

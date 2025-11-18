@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState, useCallback } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 export type FontSize =
   | "small"

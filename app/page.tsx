@@ -1,12 +1,11 @@
 "use client";
 
-import {
-  motion,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Activity,
   Brain,
   Briefcase,
+  Clock,
   ExternalLink,
   Heart,
   Mail,
@@ -16,18 +15,18 @@ import {
   Shield,
   Stethoscope,
   Users,
-  Clock,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero/hero-section";
+import { NewsSection } from "@/components/sections/news/news-section";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { Badge } from "@/components/ui/badge";
 import { BentoGrid, BentoServiceCard } from "@/components/ui/bento-grid";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { NewsSection } from "@/components/sections/news/news-section";
 
 function NewsSection() {
   const news = [
@@ -916,113 +915,6 @@ function ElectronicServicesSection() {
 
 function Footer() {
   return (
-    <footer id="kontakt" className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-primary-container dark:bg-background high-contrast:bg-surface-container-low" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.2)_0%,transparent_60%)] dark:bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.25)_0%,transparent_60%)] high-contrast:bg-none" />
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 dark:bg-primary/20 high-contrast:bg-primary shadow">
-                <span className="text-primary dark:text-primary high-contrast:text-primary-foreground font-semibold text-lg">
-                  SP
-                </span>
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">SPZOZ Parczew</p>
-                <p className="text-sm font-light text-muted-foreground">
-                  Szpital Powiatowy
-                </p>
-              </div>
-            </div>
-            <p className="text-sm font-light text-muted-foreground">
-              Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">Kontakt</h3>
-            <div className="space-y-2.5 text-sm font-light text-muted-foreground">
-              <p className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-                ul. Kościelna 136, 21-200 Parczew
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
-                (83) 355-21-02
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
-                Fax: (83) 355-21-00
-              </p>
-              <p className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-                sekretariat@spzozparczew.pl
-              </p>
-              <p className="flex items-center gap-2">
-                <Shield className="h-4 w-4 shrink-0" aria-hidden="true" />
-                IOD: iod@spzozparczew.pl
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-foreground mb-4">
-              Szybkie linki
-            </h3>
-            <nav className="space-y-2.5 text-sm font-light text-muted-foreground">
-              <Link
-                href="#dla-pacjentow"
-                className="block hover:text-foreground focus:text-foreground focus:outline-none transition-colors duration-short-4 ease-standard"
-              >
-                Dla pacjentów
-              </Link>
-              <Link
-                href="#oddzialy"
-                className="block hover:text-foreground focus:text-foreground focus:outline-none transition-colors duration-short-4 ease-standard"
-              >
-                Oddziały szpitalne
-              </Link>
-              <Link
-                href="#poradnie"
-                className="block hover:text-foreground focus:text-foreground focus:outline-none transition-colors duration-short-4 ease-standard"
-              >
-                Poradnie specjalistyczne
-              </Link>
-              <Link
-                href="#kariera"
-                className="block hover:text-foreground focus:text-foreground focus:outline-none transition-colors duration-short-4 ease-standard"
-              >
-                Kariera
-              </Link>
-              <a
-                href="https://eportal.spzozparczew.pl"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="ePortal Pacjenta (otwiera się w nowej karcie)"
-                className="block hover:text-foreground focus:text-foreground focus:outline-none transition-colors duration-short-4 ease-standard"
-              >
-                ePortal Pacjenta
-              </a>
-            </nav>
-          </div>
-        </div>
-
-        <div className="border-t border-outline-variant/30 dark:border-outline/20 high-contrast:border-foreground mt-8 pt-8 text-center text-sm font-light">
-          <p className="text-muted-foreground">
-            &copy; {new Date().getFullYear()} SPZOZ Parczew. Wszelkie prawa
-            zastrzeżone.
-          </p>
-          <p className="mt-2 text-muted-foreground/70 high-contrast:text-muted-foreground">
-            Inspektor Ochrony Danych: Sławomir Zagojski
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Link

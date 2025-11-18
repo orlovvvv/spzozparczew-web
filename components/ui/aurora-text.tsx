@@ -1,8 +1,8 @@
 "use client";
 
-import type React from "react";
-import { memo, useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import type React from "react";
+import { memo, useEffect, useState } from "react";
 
 interface AuroraTextProps {
   children: React.ReactNode;
