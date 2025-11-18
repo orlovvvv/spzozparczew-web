@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { AccessibilityPanel } from "@/components/devtools/accessibility-panel";
+import { DevToolsThemeSwitcher } from "@/components/devtools/theme-switcher";
+import { FontSizeSwitcher } from "@/components/devtools/font-size-switcher";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { FontSizeProvider } from "@/components/providers/font-size-provider";
 
@@ -41,7 +42,8 @@ export default function RootLayout({
         >
           <FontSizeProvider>
             {children}
-            <AccessibilityPanel />
+            <DevToolsThemeSwitcher />
+            <FontSizeSwitcher />
           </FontSizeProvider>
         </ThemeProvider>
       </body>
