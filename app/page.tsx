@@ -400,8 +400,6 @@ function HeroSection() {
 }
 
 function NewsSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const news = [
     {
       date: "Marzec 2025",
@@ -449,7 +447,7 @@ function NewsSection() {
         {news.map((item, index) => (
           <motion.article
             key={item.title}
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+            initial={false}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -488,8 +486,6 @@ function NewsSection() {
 }
 
 function ForPatientsSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const info = [
     {
       title: "Telefony rejestracji",
@@ -554,7 +550,7 @@ function ForPatientsSection() {
           return (
             <motion.div
               key={card.title}
-              initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+              initial={false}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -616,8 +612,6 @@ function ForPatientsSection() {
 }
 
 function ClinicsSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const clinics = [
     { name: "Kardiologiczna", description: "Choroby serca i układu krążenia" },
     { name: "Neurologiczna", description: "Schorzenia układu nerwowego" },
@@ -688,7 +682,7 @@ function ClinicsSection() {
         {clinics.map((clinic, index) => (
           <motion.div
             key={clinic.name}
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+            initial={false}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.02 }}
@@ -731,8 +725,6 @@ function ClinicsSection() {
 }
 
 function DepartmentsSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const departments = [
     {
       name: "Szpitalny Oddział Ratunkowy (SOR)",
@@ -819,7 +811,7 @@ function DepartmentsSection() {
           return (
             <motion.div
               key={dept.name}
-              initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+              initial={false}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.02 }}
@@ -866,8 +858,6 @@ function DepartmentsSection() {
 }
 
 function ServicesBentoSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const diagnosticsServices = [
     {
       name: "Rentgenodiagnostyka",
@@ -947,7 +937,7 @@ function ServicesBentoSection() {
       </div>
 
       <motion.div
-        initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
@@ -1045,8 +1035,6 @@ function ServicesBentoSection() {
 }
 
 function CareerSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const jobs = [
     {
       title: "Lekarz Specjalista",
@@ -1117,7 +1105,7 @@ function CareerSection() {
         {jobs.map((job, index) => (
           <motion.div
             key={job.title}
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+            initial={false}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
@@ -1192,8 +1180,6 @@ function CareerSection() {
 }
 
 function ElectronicServicesSection() {
-  const prefersReducedMotion = useReducedMotion();
-
   const services = [
     {
       title: "ePortal Pacjenta",
@@ -1244,7 +1230,7 @@ function ElectronicServicesSection() {
           return (
             <motion.div
               key={service.title}
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
