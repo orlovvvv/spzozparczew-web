@@ -3,7 +3,7 @@
 import { ExternalLink, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { FontSizeContext } from "@/components/providers/font-size-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -93,73 +93,6 @@ function ListItem({
 
 export function Header() {
   const { scale: fontScale } = useContext(FontSizeContext) || { scale: 1 };
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const sheetContentRef = useRef<HTMLDivElement>(null);
-
-  // Handle body scroll lock when menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.style.overflow = "";
-      document.body.classList.remove("menu-open");
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-      document.body.classList.remove("menu-open");
-    };
-  }, [isMenuOpen]);
-
-  // Focus management when sheet opens
-  useEffect(() => {
-    if (isMenuOpen && sheetContentRef.current) {
-      // Focus first menu item when sheet opens
-      const firstMenuItem = sheetContentRef.current.querySelector("a");
-      firstMenuItem?.focus();
-    }
-  }, [isMenuOpen]);
-
-  // Handle menu link clicks to preserve scroll position
-  const handleMenuLinkClick = (href: string) => {
-    // Get target element and store scroll position before closing menu
-    const element = document.querySelector(href);
-    let targetScrollY = 0;
-
-    if (element) {
-      // Calculate target position
-      const elementPosition = element.getBoundingClientRect().top;
-      targetScrollY = window.scrollY + elementPosition;
-    }
-
-    // Close menu immediately
-    setIsMenuOpen(false);
-
-    // Restore scroll position after menu closes
-    setTimeout(() => {
-      if (element) {
-        window.scrollTo({ top: targetScrollY, behavior: "smooth" });
-      }
-    }, 150); // Slightly longer delay to ensure menu is fully closed
-  };
-
-  // Handle keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      setIsMenuOpen(false);
-    }
-  };
-
-  // Calculate dynamic sheet width based on font scale
-  const calculateSheetWidth = () => {
-    const baseWidth = 320;
-    const maxWidth = Math.min(
-      480,
-      baseWidth * Math.min(1.5, Math.max(0.875, fontScale)),
-    );
-    return `${maxWidth}px`;
-  };
 
   return (
     <header className=" z-40 relative top-2">
@@ -335,7 +268,7 @@ export function Header() {
         </NavigationMenu>
 
         {/* Navigation Section - More Responsive */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Button
             variant="outline"
             size="sm"
@@ -356,7 +289,7 @@ export function Header() {
             </a>
           </Button>
 
-          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <Sheet>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
@@ -368,11 +301,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent
-              ref={sheetContentRef}
               side="right"
-              onKeyDown={handleKeyDown}
               className="overflow-y-auto p-0 bg-white/80 backdrop-blur-xl dark:bg-black/80 high-contrast:bg-popover high-contrast:backdrop-blur-none transition-all duration-300"
-              style={{ width: calculateSheetWidth() }}
+              style={{ width: fontScale >= 1.5 ? '480px' : fontScale >= 1.25 ? '400px' : '320px' }}
             >
               <SheetTitle className="sr-only">Menu nawigacyjne</SheetTitle>
               <nav
@@ -386,21 +317,18 @@ export function Header() {
                   <div className="flex flex-col -mx-3">
                     <Link
                       href="#poradnie"
-                      onClick={() => handleMenuLinkClick("#poradnie")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Poradnie specjalistyczne
                     </Link>
                     <Link
                       href="#oddzialy"
-                      onClick={() => handleMenuLinkClick("#oddzialy")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Oddziały szpitalne
                     </Link>
                     <Link
                       href="#diagnostyka"
-                      onClick={() => handleMenuLinkClick("#diagnostyka")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Diagnostyka
@@ -414,14 +342,12 @@ export function Header() {
                   <div className="flex flex-col -mx-3">
                     <Link
                       href="#dla-pacjentow"
-                      onClick={() => handleMenuLinkClick("#dla-pacjentow")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Rejestracja
                     </Link>
                     <Link
                       href="#kontakt"
-                      onClick={() => handleMenuLinkClick("#kontakt")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Telefony kontaktowe
@@ -435,14 +361,12 @@ export function Header() {
                   <div className="flex flex-col -mx-3">
                     <Link
                       href="#aktualnosci"
-                      onClick={() => handleMenuLinkClick("#aktualnosci")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Aktualności
                     </Link>
                     <Link
                       href="#kontakt"
-                      onClick={() => handleMenuLinkClick("#kontakt")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Kontakt
