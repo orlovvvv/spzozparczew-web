@@ -65,15 +65,15 @@ const BentoCard = ({
   >
     <div>{background}</div>
     <div className="p-4">
-      <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10">
-        <Icon className="h-12 w-12 origin-left transform-gpu text-foreground transition-all duration-300 ease-in-out group-hover:scale-75" />
+      <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 lg:group-hover:-translate-y-10 motion-reduce:lg:group-hover:translate-y-0 motion-reduce:transition-none">
+        <Icon className="h-12 w-12 origin-left transform-gpu text-foreground transition-all duration-300 ease-in-out group-hover:scale-75 motion-reduce:group-hover:scale-100 motion-reduce:transition-none" />
         <h3 className="text-xl font-semibold text-foreground">{name}</h3>
         <p className="max-w-lg text-muted-foreground">{description}</p>
       </div>
 
       <div
         className={cn(
-          "pointer-events-none flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:hidden",
+          "pointer-events-none flex w-full translate-y-0 transform-gpu flex-row items-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 lg:hidden motion-reduce:group-hover:translate-y-0 motion-reduce:transition-opacity",
         )}
       >
         <Button
@@ -92,7 +92,7 @@ const BentoCard = ({
 
     <div
       className={cn(
-        "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 lg:flex",
+        "pointer-events-none absolute bottom-0 hidden w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 lg:flex motion-reduce:group-hover:translate-y-0 motion-reduce:group-focus-within:translate-y-0 motion-reduce:transition-opacity",
       )}
     >
       <Button
@@ -128,7 +128,7 @@ const BentoServiceCard = ({
       "bg-white/60 backdrop-blur-xl border border-white/40 shadow-lg",
       "dark:bg-white/5 dark:border-white/10 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]",
       "high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none high-contrast:border-2 high-contrast:border-foreground high-contrast:shadow-none",
-      "hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transform-gpu transition-all duration-medium-2 ease-standard high-contrast:hover:shadow-none",
+      "hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transform-gpu transition-all duration-medium-2 ease-standard motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 motion-reduce:transition-colors high-contrast:hover:shadow-none",
       className,
     )}
     {...props}

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { DevToolsThemeSwitcher } from "@/components/devtools/theme-switcher";
-import { FontSizeSwitcher } from "@/components/devtools/font-size-switcher";
+import { AccessibilityWidget } from "@/components/accessibility/accessibility-widget";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { FontSizeProvider } from "@/components/providers/font-size-provider";
 
@@ -42,10 +41,19 @@ export default function RootLayout({
         >
           <FontSizeProvider>
             {children}
-            <DevToolsThemeSwitcher />
-            <FontSizeSwitcher />
+            <AccessibilityWidget />
           </FontSizeProvider>
         </ThemeProvider>
+
+        {/* Portal containers for z-index hierarchy */}
+        <div
+          id="modal-portal"
+          style={{ position: "fixed", zIndex: 1000, pointerEvents: "none" }}
+        />
+        <div
+          id="accessibility-portal"
+          style={{ position: "fixed", zIndex: 10000, pointerEvents: "none" }}
+        />
       </body>
     </html>
   );

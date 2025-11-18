@@ -54,7 +54,7 @@ function SuggestionChip({
       onClick={onClick}
       onKeyDown={handleKeyDown}
       aria-label={`Zapytaj o: ${children}`}
-      className="inline-flex items-center rounded-full border border-outline-variant bg-background px-4 py-2 text-sm font-light text-muted-foreground shadow-sm hover:bg-accent hover:border-primary hover:text-foreground hover:shadow-md hover:scale-105 active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-medium-2 ease-standard high-contrast:border-foreground high-contrast:bg-surface-container-low high-contrast:text-foreground high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:hover:border-primary"
+      className="inline-flex items-center rounded-full border border-outline-variant bg-background px-4 py-2 text-sm font-light text-muted-foreground shadow-sm hover:bg-accent hover:border-primary hover:text-foreground hover:shadow-md hover:scale-105 active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-medium-2 ease-standard motion-reduce:hover:scale-100 motion-reduce:transition-colors high-contrast:border-foreground high-contrast:bg-surface-container-low high-contrast:text-foreground high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:hover:border-primary"
     >
       {children}
     </button>
@@ -454,7 +454,7 @@ function NewsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
+            <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
               <CardContent className="p-5">
                 <div className="flex items-center justify-between mb-3">
                   <time
@@ -504,8 +504,11 @@ function ForPatientsSection() {
       title: "Godziny otwarcia",
       icon: Clock,
       items: [
-        { label: "Rejestracja", value: "pon.–pt. 07:00–14:00" },
-        { label: "Laboratorium", value: "pobrania 07:00–10:00" },
+        { label: "Rejestracja", value: "pon. – pt. 07:00 – 14:00" },
+        {
+          label: "Punkt pobrań",
+          value: "pon. – pt. 07:00 – 10:00",
+        },
         { label: "SOR", value: "całodobowo 24/7" },
       ],
     },
@@ -556,7 +559,7 @@ function ForPatientsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
-              <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
+              <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
                 <CardContent className="p-5">
                   <div className="flex items-start gap-3">
                     <div
@@ -690,7 +693,7 @@ function ClinicsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.02 }}
           >
-            <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
+            <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
               <CardContent className="p-5">
                 <div className="flex items-start gap-3">
                   <div
@@ -821,7 +824,7 @@ function DepartmentsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.02 }}
             >
-              <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
+              <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
                 <CardContent className="p-5">
                   <div className="flex items-start gap-3">
                     <div
@@ -1119,7 +1122,7 @@ function CareerSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
+            <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
               <CardContent className="p-5 flex flex-col h-full">
                 <div className="flex items-start gap-3 mb-3">
                   <div
