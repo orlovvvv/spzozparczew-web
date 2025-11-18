@@ -3,6 +3,8 @@
 import { ExternalLink, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext, useEffect, useRef, useState } from "react";
+import { FontSizeContext } from "@/components/providers/font-size-provider";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -90,9 +92,77 @@ function ListItem({
 }
 
 export function Header() {
+  const { scale: fontScale } = useContext(FontSizeContext) || { scale: 1 };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const sheetContentRef = useRef<HTMLDivElement>(null);
+
+  // Handle body scroll lock when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+    };
+  }, [isMenuOpen]);
+
+  // Focus management when sheet opens
+  useEffect(() => {
+    if (isMenuOpen && sheetContentRef.current) {
+      // Focus first menu item when sheet opens
+      const firstMenuItem = sheetContentRef.current.querySelector("button");
+      firstMenuItem?.focus();
+    }
+  }, [isMenuOpen]);
+
+  // Handle menu link clicks to preserve scroll position
+  const handleMenuLinkClick = (href: string) => {
+    // Close menu first
+    setIsMenuOpen(false);
+
+    // Navigate to section after a short delay
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsMenuOpen(false);
+    }
+  };
+
+  // Calculate dynamic sheet width based on font scale
+  const calculateSheetWidth = () => {
+    const baseWidth = 320;
+    const maxWidth = Math.min(
+      480,
+      baseWidth * Math.min(1.5, Math.max(0.875, fontScale)),
+    );
+    return `${maxWidth}px`;
+  };
+
   return (
     <header role="banner" className="relative z-40">
-      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4 lg:gap-6 overflow-x-hidden">
+      <div
+        className={`mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4 lg:gap-6 overflow-x-hidden ${
+          fontScale >= 1.25
+            ? "lg:flex-col"
+            : fontScale >= 1.5
+              ? "md:flex-col"
+              : ""
+        }`}
+      >
         {/* Logo + Hospital Info Section */}
         <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 min-w-0 flex-1">
           {/* Logo */}
@@ -149,9 +219,6 @@ export function Header() {
                 „Celem do którego dążymy, jest zdrowie pacjentów"
               </span>
               <span className="hidden md:block lg:block xl:hidden max-w-xs sm:max-w-sm md:max-w-md">
-                „Celem do którego dążymy, jest zdrowie naszych pacjentów"
-              </span>
-              <span className="hidden lg:block xl:block max-w-2xl">
                 „Celem do którego dążymy, jest zdrowie naszych pacjentów"
               </span>
             </p>
@@ -288,7 +355,7 @@ export function Header() {
             </a>
           </Button>
 
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
@@ -300,8 +367,11 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent
+              ref={sheetContentRef}
               side="right"
-              className="w-[320px] overflow-y-auto p-0 bg-white/80 backdrop-blur-xl dark:bg-black/80 high-contrast:bg-popover high-contrast:backdrop-blur-none"
+              onKeyDown={handleKeyDown}
+              className="overflow-y-auto p-0 bg-white/80 backdrop-blur-xl dark:bg-black/80 high-contrast:bg-popover high-contrast:backdrop-blur-none transition-all duration-300"
+              style={{ width: calculateSheetWidth() }}
             >
               <SheetTitle className="sr-only">Menu nawigacyjne</SheetTitle>
               <nav
@@ -313,24 +383,27 @@ export function Header() {
                     Działalność Lecznicza
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <Link
-                      href="#poradnie"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#poradnie")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Poradnie specjalistyczne
-                    </Link>
-                    <Link
-                      href="#oddzialy"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#oddzialy")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Oddziały szpitalne
-                    </Link>
-                    <Link
-                      href="#diagnostyka"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#diagnostyka")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Diagnostyka
-                    </Link>
+                    </button>
                   </div>
                 </div>
                 <div>
@@ -338,18 +411,20 @@ export function Header() {
                     Dla Pacjenta
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <Link
-                      href="#dla-pacjentow"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#dla-pacjentow")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Rejestracja
-                    </Link>
-                    <Link
-                      href="#kontakt"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#kontakt")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Telefony kontaktowe
-                    </Link>
+                    </button>
                   </div>
                 </div>
                 <div>
@@ -357,18 +432,20 @@ export function Header() {
                     O Nas
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <Link
-                      href="#aktualnosci"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#aktualnosci")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Aktualności
-                    </Link>
-                    <Link
-                      href="#kontakt"
-                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleMenuLinkClick("#kontakt")}
+                      className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Kontakt
-                    </Link>
+                    </button>
                   </div>
                 </div>
                 <div className="pt-2 border-t border-outline-variant">
