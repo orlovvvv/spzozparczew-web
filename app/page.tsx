@@ -32,6 +32,7 @@ import { Badge } from "@/components/ui/badge";
 import { BentoGrid, BentoServiceCard } from "@/components/ui/bento-grid";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { DepartmentsSection } from "@/components/sections/departments/departments-section";
 
 function SuggestionChip({
   children,
@@ -718,139 +719,6 @@ function ClinicsSection() {
             </Card>
           </motion.div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function DepartmentsSection() {
-  const departments = [
-    {
-      name: "Szpitalny Oddział Ratunkowy (SOR)",
-      description: "Całodobowa pomoc w nagłych przypadkach",
-      icon: Shield,
-      badge: "24/7",
-    },
-    {
-      name: "Anestezjologii i Intensywnej Terapii",
-      description: "Opieka nad pacjentami w stanach krytycznych",
-      icon: Heart,
-    },
-    {
-      name: "Chirurgiczno-Urazowy",
-      description: "Leczenie operacyjne i pourazowe",
-      icon: Activity,
-    },
-    {
-      name: "Dziecięcy",
-      description: "Opieka pediatryczna dla dzieci",
-      icon: Users,
-    },
-    {
-      name: "Geriatryczny",
-      description: "Specjalistyczna opieka dla osób starszych",
-      icon: Heart,
-    },
-    {
-      name: "Chorób Wewnętrznych",
-      description: "Diagnostyka i leczenie chorób internistycznych",
-      icon: Stethoscope,
-    },
-    {
-      name: "Rehabilitacyjny",
-      description: "Kompleksowa rehabilitacja lecznicza",
-      icon: Activity,
-    },
-    {
-      name: "Psychiatryczny",
-      description: "Leczenie zaburzeń psychicznych",
-      icon: Brain,
-    },
-    {
-      name: "Dzienny Psychiatryczny",
-      description: "Dzienna opieka psychiatryczna",
-      icon: Brain,
-    },
-    {
-      name: "Leczenia Uzależnień",
-      description: "Terapia uzależnień",
-      icon: Heart,
-    },
-    {
-      name: "Dzienny Terapii Uzależnienia od Alkoholu",
-      description: "Dzienna terapia alkoholowa",
-      icon: Heart,
-    },
-  ];
-
-  return (
-    <section
-      id="oddzialy"
-      aria-labelledby="oddzialy-heading"
-      className="space-y-6 bg-primary-container dark:bg-neutral-900 high-contrast:bg-surface-container-high -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 rounded-3xl"
-    >
-      <div className="flex items-center gap-3">
-        <div className="h-8 w-1.5 bg-on-primary-container dark:bg-primary high-contrast:bg-foreground rounded-full" />
-        <div>
-          <h2
-            id="oddzialy-heading"
-            className="text-xl font-semibold tracking-tight text-foreground"
-          >
-            Oddziały szpitalne
-          </h2>
-          <p className="mt-0.5 text-sm font-light text-muted-foreground">
-            11 specjalistycznych oddziałów
-          </p>
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {departments.map((dept, index) => {
-          const Icon = dept.icon;
-          return (
-            <motion.div
-              key={dept.name}
-              initial={false}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.02 }}
-            >
-              <Card className="h-full rounded-xl bg-white/60 backdrop-blur-xl dark:bg-white/5 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none border border-white/40 dark:border-white/10 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-medium-2 motion-reduce:hover:translate-y-0 motion-reduce:transition-colors ease-standard focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
-                <CardContent className="p-5">
-                  <div className="flex items-start gap-3">
-                    <div
-                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-container dark:bg-primary/20 high-contrast:bg-primary text-on-primary-container dark:text-primary high-contrast:text-primary-foreground shrink-0"
-                      aria-hidden="true"
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-base font-medium text-foreground leading-tight">
-                          {dept.name}
-                        </h3>
-                        {dept.badge && (
-                          <Badge
-                            variant="secondary"
-                            className="text-xs shrink-0 rounded-lg shadow-xs"
-                          >
-                            {dept.badge}
-                          </Badge>
-                        )}
-                      </div>
-                      <p
-                        className="text-sm font-light text-muted-foreground mt-1 line-clamp-2"
-                        id={`dept-desc-${index}`}
-                      >
-                        {dept.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          );
-        })}
       </div>
     </section>
   );
