@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SPZOZ Parczew – Szpital Powiatowy",
+  title: "SPZOZ w Parczewie",
   description:
     "SPZOZ Parczew – informacje dla pacjentów, godziny otwarcia, poradnie, usługi, aktualności.",
   other: {

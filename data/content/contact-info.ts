@@ -19,7 +19,7 @@ export interface QuickLink {
 
 export const mainContact: {
   hospitalName: string;
-  hospitalType: string;
+  hospitalMotto: string;
   fullLegalName: string;
   mainPhone: string;
   mainPhoneHref: string;
@@ -33,7 +33,7 @@ export const mainContact: {
   iodName: string;
 } = {
   hospitalName: "SPZOZ Parczew",
-  hospitalType: "Szpital Powiatowy",
+  hospitalMotto: "Celem do którego dążymy, jest zdrowie naszych pacjentów",
   fullLegalName: "Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie",
   mainPhone: "(83) 355-21-02",
   mainPhoneHref: "+48833552102",

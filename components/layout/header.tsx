@@ -162,7 +162,7 @@ export function Header() {
   };
 
   return (
-    <header role="banner" className="relative z-40">
+    <header className=" z-40 relative top-2">
       <div
         className={`mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4 lg:gap-6 overflow-x-hidden ${
           fontScale >= 1.25
@@ -173,22 +173,22 @@ export function Header() {
         }`}
       >
         {/* Logo + Hospital Info Section */}
-        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 min-w-0 flex-1">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 min-w-0 backdrop-blur-sm  bg-white/60 dark:bg-white/5 high-contrast:bg-foreground/5 shadow group-hover:shadow-lg transition-all duration-medium-2 ease-standard rounded-2xl p-2">
           {/* Logo */}
           <Link
             href="/"
             aria-label="SPZOZ Parczew - strona główna"
-            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1 -m-1 flex-shrink-0"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1 -m-1 "
           >
             <div
-              className="relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl overflow-hidden bg-white/10 dark:bg-white/5 high-contrast:bg-primary shadow group-hover:shadow-lg transition-all duration-medium-2 ease-standard"
+              className="relative w-14 h-14 rounded-xl overflow-hidden "
               aria-hidden="true"
             >
               <Image
                 src="/logo.png"
                 alt="Logo SPZOZ Parczew"
                 fill
-                className="object-contain p-2"
+                className="object-fill"
                 sizes="(max-width: 640px) 40px, (max-width: 1024px) 48px, 56px"
               />
             </div>
@@ -204,15 +204,7 @@ export function Header() {
               {/* Hospital Name - Progressive display */}
               <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-foreground leading-tight group-hover:text-foreground/80 transition-colors duration-medium-2 ease-standard break-words hyphens-auto text-balance min-w-0">
                 {/* Progressive text based on viewport */}
-                <span className="block sm:hidden">SPZOZ Parczew</span>
-                <span className="hidden sm:block md:hidden">SPZOZ Parczew</span>
-                <span className="hidden md:block lg:hidden">
-                  Samodzielny Publiczny ZOZ w Parczewie
-                </span>
-                <span className="hidden lg:block xl:block">
-                  Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
-                </span>
-                <span className="hidden xl:block text-balance">
+                <span className="block">
                   Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
                 </span>
               </h2>
@@ -222,13 +214,13 @@ export function Header() {
             <p className="text-xs sm:text-sm md:text-base text-muted-foreground italic font-light leading-relaxed text-balance break-words hyphens-auto min-w-0">
               {/* Show shorter motto on smaller screens */}
               <span className="block sm:hidden md:hidden">
-                Dla zdrowia pacjentów
+                Celem do którego dążymy, jest zdrowie pacjentów
               </span>
               <span className="hidden sm:block md:block lg:hidden">
-                „Celem do którego dążymy, jest zdrowie pacjentów"
+                Celem do którego dążymy, jest zdrowie pacjentów
               </span>
               <span className="hidden md:block lg:block xl:hidden max-w-xs sm:max-w-sm md:max-w-md">
-                „Celem do którego dążymy, jest zdrowie naszych pacjentów"
+                Celem do którego dążymy, jest zdrowie naszych pacjentów
               </span>
             </p>
           </div>
