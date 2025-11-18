@@ -91,7 +91,7 @@ function ListItem({
 export function Header() {
   return (
     <header role="banner" className="relative z-40">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link
           href="/"
           aria-label="SPZOZ Parczew - strona główna"
@@ -127,7 +127,7 @@ export function Header() {
                 Działalność Lecznicza
               </NavigationMenuTrigger>
               <NavigationMenuContent className="bg-white/80 backdrop-blur-xl dark:bg-white/10 high-contrast:bg-popover high-contrast:backdrop-blur-none border border-white/40 dark:border-white/20 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-                <div className="grid gap-3 p-6 w-[600px] lg:w-[700px] lg:grid-cols-[1fr_1fr]">
+                <div className="grid gap-3 p-6 min-w-[min(600px,90vw)] max-w-[min(700px,95vw)] lg:grid-cols-[1fr_1fr]">
                   <div>
                     <h3 className="font-medium text-sm text-foreground mb-3">
                       Oddziały szpitalne
@@ -149,7 +149,7 @@ export function Header() {
                     <h3 className="font-medium text-sm text-foreground mb-3">
                       Poradnie specjalistyczne
                     </h3>
-                    <ul className="space-y-1 columns-2">
+                    <ul className="space-y-1">
                       {clinics.map((clinic) => (
                         <li key={clinic}>
                           <Link
@@ -171,7 +171,7 @@ export function Header() {
                 Dla Pacjenta
               </NavigationMenuTrigger>
               <NavigationMenuContent className="bg-white/80 backdrop-blur-xl dark:bg-white/10 high-contrast:bg-popover high-contrast:backdrop-blur-none border border-white/40 dark:border-white/20 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-                <ul className="grid w-[400px] gap-3 p-4">
+                <ul className="grid min-w-[min(400px,90vw)] max-w-[min(500px,95vw)] gap-3 p-4">
                   <ListItem title="Rejestracja" href="#dla-pacjentow">
                     Informacje o rejestracji do poradni specjalistycznych
                   </ListItem>
@@ -193,7 +193,7 @@ export function Header() {
                 O Nas
               </NavigationMenuTrigger>
               <NavigationMenuContent className="bg-white/80 backdrop-blur-xl dark:bg-white/10 high-contrast:bg-popover high-contrast:backdrop-blur-none border border-white/40 dark:border-white/20 high-contrast:border-2 high-contrast:border-foreground shadow-lg dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-                <ul className="grid w-[400px] gap-3 p-4">
+                <ul className="grid min-w-[min(400px,90vw)] max-w-[min(500px,95vw)] gap-3 p-4">
                   <ListItem title="Informacje o Szpitalu" href="#">
                     Historia i struktura organizacyjna
                   </ListItem>
