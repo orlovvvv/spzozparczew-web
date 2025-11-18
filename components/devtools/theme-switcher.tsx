@@ -160,7 +160,7 @@ export function DevToolsThemeSwitcher() {
   if (!mounted) return null;
 
   const panelContent = (
-    <div className="fixed bottom-4 right-4 z-[9999] flex flex-col items-end gap-3 max-sm:bottom-2 max-sm:right-2">
+    <div className="fixed bottom-4 right-4 z-[10000] flex flex-col items-end gap-3 max-sm:bottom-2 max-sm:right-2">
       {isOpen && (
         <div
           className={cn(
