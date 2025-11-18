@@ -1,6 +1,7 @@
 "use client";
 
 import { ExternalLink, Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -91,30 +92,71 @@ function ListItem({
 export function Header() {
   return (
     <header role="banner" className="relative z-40">
-      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
-        <Link
-          href="/"
-          aria-label="SPZOZ Parczew - strona główna"
-          className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1 -m-1"
-        >
-          <div
-            className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 dark:bg-primary/20 high-contrast:bg-primary shadow-sm group-hover:bg-primary/15 dark:group-hover:bg-primary/30 high-contrast:group-hover:bg-primary/90 transition-colors duration-medium-2 ease-standard"
-            aria-hidden="true"
+      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4 lg:gap-6 overflow-x-hidden">
+        {/* Logo + Hospital Info Section */}
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 min-w-0 flex-1">
+          {/* Logo */}
+          <Link
+            href="/"
+            aria-label="SPZOZ Parczew - strona główna"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1 -m-1 flex-shrink-0"
           >
-            <span
-              className="text-primary dark:text-primary high-contrast:text-primary-foreground font-semibold tracking-tight leading-none text-lg"
+            <div
+              className="relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl overflow-hidden bg-white/10 dark:bg-white/5 high-contrast:bg-primary shadow group-hover:shadow-lg transition-all duration-medium-2 ease-standard"
               aria-hidden="true"
             >
-              SP
-            </span>
+              <Image
+                src="/logo.png"
+                alt="Logo SPZOZ Parczew"
+                fill
+                className="object-contain p-2"
+                sizes="(max-width: 640px) 40px, (max-width: 1024px) 48px, 56px"
+              />
+            </div>
+          </Link>
+
+          {/* Hospital Name and Motto - Progressive Enhancement */}
+          <div className="flex flex-col min-w-0 flex-1">
+            <Link
+              href="/"
+              aria-label="SPZOZ Parczew - strona główna"
+              className="group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            >
+              {/* Hospital Name - Progressive display */}
+              <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-foreground leading-tight group-hover:text-foreground/80 transition-colors duration-medium-2 ease-standard break-words hyphens-auto text-balance min-w-0">
+                {/* Progressive text based on viewport */}
+                <span className="block sm:hidden">SPZOZ Parczew</span>
+                <span className="hidden sm:block md:hidden">SPZOZ Parczew</span>
+                <span className="hidden md:block lg:hidden">
+                  Samodzielny Publiczny ZOZ w Parczewie
+                </span>
+                <span className="hidden lg:block xl:block">
+                  Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
+                </span>
+                <span className="hidden xl:block text-balance">
+                  Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
+                </span>
+              </h2>
+            </Link>
+
+            {/* Motto - Progressive display */}
+            <p className="text-xs sm:text-sm md:text-base text-muted-foreground italic font-light leading-relaxed text-balance break-words hyphens-auto min-w-0">
+              {/* Show shorter motto on smaller screens */}
+              <span className="block sm:hidden md:hidden">
+                Dla zdrowia pacjentów
+              </span>
+              <span className="hidden sm:block md:block lg:hidden">
+                „Celem do którego dążymy, jest zdrowie pacjentów"
+              </span>
+              <span className="hidden md:block lg:block xl:hidden max-w-xs sm:max-w-sm md:max-w-md">
+                „Celem do którego dążymy, jest zdrowie naszych pacjentów"
+              </span>
+              <span className="hidden lg:block xl:block max-w-2xl">
+                „Celem do którego dążymy, jest zdrowie naszych pacjentów"
+              </span>
+            </p>
           </div>
-          <span
-            className="text-base font-semibold tracking-tight text-foreground hidden sm:block group-hover:text-foreground/80 high-contrast:group-hover:text-foreground transition-colors duration-medium-2 ease-standard"
-            aria-hidden="true"
-          >
-            SPZOZ Parczew
-          </span>
-        </Link>
+        </div>
 
         <NavigationMenu
           id="main-navigation"
@@ -224,11 +266,12 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="flex items-center gap-3">
+        {/* Navigation Section - More Responsive */}
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <Button
             variant="outline"
             size="sm"
-            className="hidden md:inline-flex rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard"
+            className="hidden md:inline-flex rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard text-xs sm:text-sm"
             asChild
           >
             <a
@@ -236,8 +279,12 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Wyniki badań
-              <ExternalLink className="h-3.5 w-3.5 ml-1.5" aria-hidden="true" />
+              <span className="hidden lg:inline">Wyniki badań</span>
+              <span className="lg:hidden">Wyniki</span>
+              <ExternalLink
+                className="h-3 w-3 ml-1 lg:h-3.5 lg:w-3.5 lg:ml-1.5"
+                aria-hidden="true"
+              />
             </a>
           </Button>
 
@@ -248,7 +295,7 @@ export function Header() {
                 size="icon"
                 className="xl:hidden rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span className="sr-only">Otwórz menu</span>
               </Button>
             </SheetTrigger>
