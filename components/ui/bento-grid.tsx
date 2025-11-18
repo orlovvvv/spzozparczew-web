@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useFontSize } from "@/hooks/use-font-size";
 
 interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
   children: ReactNode;
@@ -29,11 +30,16 @@ interface BentoServiceCardProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
+  const { getResponsiveClasses } = useFontSize();
+
+  // Apply font-scale aware classes to the default grid, but allow overrides via className
+  const defaultClasses = getResponsiveClasses(
+    "grid w-full auto-rows-auto grid-cols-3 gap-4",
+  );
+  const finalClasses = cn(defaultClasses, className);
+
   return (
-    <div
-      className={cn("grid w-full auto-rows-auto grid-cols-3 gap-4", className)}
-      {...props}
-    >
+    <div className={finalClasses} {...props}>
       {children}
     </div>
   );

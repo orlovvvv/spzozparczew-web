@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SPZOZ Parczew – Szpital Powiatowy",
+  title: "SPZOZ w Parczewie",
   description:
     "SPZOZ Parczew – informacje dla pacjentów, godziny otwarcia, poradnie, usługi, aktualności.",
   other: {
@@ -48,7 +48,7 @@ export default function RootLayout({
         {/* Portal containers for z-index hierarchy */}
         <div
           id="modal-portal"
-          style={{ position: "fixed", zIndex: 1000, pointerEvents: "none" }}
+          style={{ position: "fixed", zIndex: 1000, pointerEvents: "auto" }}
         />
         <div
           id="accessibility-portal"

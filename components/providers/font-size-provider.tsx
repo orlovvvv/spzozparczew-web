@@ -24,6 +24,9 @@ type FontSizeContextType = {
   setFontSize: (size: FontSize) => void;
   scale: number;
   percentage: number;
+  // Breakpoint utilities for font-scale aware responsiveness
+  getResponsiveClasses: (baseClasses: string) => string;
+  shouldReduceColumns: () => boolean;
 };
 
 export const FontSizeContext = createContext<FontSizeContextType | undefined>(
@@ -72,11 +75,46 @@ export function FontSizeProvider({ children }: { children: React.ReactNode }) {
     setFontSizeState(size);
   }, []);
 
+  // Font-scale aware responsive utilities
+  const getResponsiveClasses = useCallback(
+    (baseClasses: string) => {
+      const scale = FONT_SIZES[fontSize].scale;
+
+      // For font scales 1.25 and above, we need to adjust breakpoints
+      // This function modifies Tailwind classes to be more conservative
+      if (scale >= 1.25) {
+        return (
+          baseClasses
+            // Convert lg:grid-cols-3 to md:grid-cols-2 for larger fonts
+            .replace(/lg:grid-cols-3/g, "md:grid-cols-2")
+            // Convert md:grid-cols-3 to sm:grid-cols-2 for very large fonts
+            .replace(
+              /md:grid-cols-3/g,
+              scale >= 1.5 ? "sm:grid-cols-2" : "sm:grid-cols-3",
+            )
+            // Adjust other responsive classes to be more conservative
+            .replace(/xl:/g, "lg:")
+            .replace(/lg:(?!grid-cols-3)/g, "md:")
+            .replace(/md:(?!grid-cols-3)/g, "sm:")
+        );
+      }
+
+      return baseClasses;
+    },
+    [fontSize],
+  );
+
+  const shouldReduceColumns = useCallback(() => {
+    return FONT_SIZES[fontSize].scale >= 1.25;
+  }, [fontSize]);
+
   const value = {
     fontSize,
     setFontSize,
     scale: FONT_SIZES[fontSize].scale,
     percentage: FONT_SIZES[fontSize].value,
+    getResponsiveClasses,
+    shouldReduceColumns,
   };
 
   return (

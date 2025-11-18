@@ -5,8 +5,11 @@ import { Stethoscope } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { clinicRegistration, clinics } from "@/data/content/clinics";
+import { useFontSize } from "@/hooks/use-font-size";
 
 export function ClinicsSection() {
+  const { getResponsiveClasses } = useFontSize();
+
   return (
     <section
       id="poradnie"
@@ -35,7 +38,11 @@ export function ClinicsSection() {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        className={getResponsiveClasses(
+          "grid sm:grid-cols-2 lg:grid-cols-3 gap-4",
+        )}
+      >
         {clinics.map((clinic, index) => (
           <motion.div
             key={clinic.name}

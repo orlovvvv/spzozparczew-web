@@ -3,7 +3,7 @@
 import { ExternalLink, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { FontSizeContext } from "@/components/providers/font-size-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -93,67 +93,9 @@ function ListItem({
 
 export function Header() {
   const { scale: fontScale } = useContext(FontSizeContext) || { scale: 1 };
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const sheetContentRef = useRef<HTMLDivElement>(null);
-
-  // Handle body scroll lock when menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.style.overflow = "";
-      document.body.classList.remove("menu-open");
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-      document.body.classList.remove("menu-open");
-    };
-  }, [isMenuOpen]);
-
-  // Focus management when sheet opens
-  useEffect(() => {
-    if (isMenuOpen && sheetContentRef.current) {
-      // Focus first menu item when sheet opens
-      const firstMenuItem = sheetContentRef.current.querySelector("button");
-      firstMenuItem?.focus();
-    }
-  }, [isMenuOpen]);
-
-  // Handle menu link clicks to preserve scroll position
-  const handleMenuLinkClick = (href: string) => {
-    // Close menu first
-    setIsMenuOpen(false);
-
-    // Navigate to section after a short delay
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
-  // Handle keyboard navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") {
-      setIsMenuOpen(false);
-    }
-  };
-
-  // Calculate dynamic sheet width based on font scale
-  const calculateSheetWidth = () => {
-    const baseWidth = 320;
-    const maxWidth = Math.min(
-      480,
-      baseWidth * Math.min(1.5, Math.max(0.875, fontScale)),
-    );
-    return `${maxWidth}px`;
-  };
 
   return (
-    <header role="banner" className="relative z-40">
+    <header className=" z-40 relative top-2">
       <div
         className={`mx-auto max-w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-wrap items-center justify-between gap-3 sm:gap-4 lg:gap-6 overflow-x-hidden ${
           fontScale >= 1.25
@@ -164,22 +106,22 @@ export function Header() {
         }`}
       >
         {/* Logo + Hospital Info Section */}
-        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 min-w-0 flex-1">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 min-w-0 backdrop-blur-sm  bg-white/60 dark:bg-white/5 high-contrast:bg-foreground/5 shadow group-hover:shadow-lg transition-all duration-medium-2 ease-standard rounded-2xl p-2">
           {/* Logo */}
           <Link
             href="/"
             aria-label="SPZOZ Parczew - strona główna"
-            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1 -m-1 flex-shrink-0"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-1 -m-1 "
           >
             <div
-              className="relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl overflow-hidden bg-white/10 dark:bg-white/5 high-contrast:bg-primary shadow group-hover:shadow-lg transition-all duration-medium-2 ease-standard"
+              className="relative w-14 h-14 rounded-xl overflow-hidden "
               aria-hidden="true"
             >
               <Image
                 src="/logo.png"
                 alt="Logo SPZOZ Parczew"
                 fill
-                className="object-contain p-2"
+                className="object-fill"
                 sizes="(max-width: 640px) 40px, (max-width: 1024px) 48px, 56px"
               />
             </div>
@@ -195,15 +137,7 @@ export function Header() {
               {/* Hospital Name - Progressive display */}
               <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-foreground leading-tight group-hover:text-foreground/80 transition-colors duration-medium-2 ease-standard break-words hyphens-auto text-balance min-w-0">
                 {/* Progressive text based on viewport */}
-                <span className="block sm:hidden">SPZOZ Parczew</span>
-                <span className="hidden sm:block md:hidden">SPZOZ Parczew</span>
-                <span className="hidden md:block lg:hidden">
-                  Samodzielny Publiczny ZOZ w Parczewie
-                </span>
-                <span className="hidden lg:block xl:block">
-                  Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
-                </span>
-                <span className="hidden xl:block text-balance">
+                <span className="block">
                   Samodzielny Publiczny Zakład Opieki Zdrowotnej w Parczewie
                 </span>
               </h2>
@@ -213,13 +147,13 @@ export function Header() {
             <p className="text-xs sm:text-sm md:text-base text-muted-foreground italic font-light leading-relaxed text-balance break-words hyphens-auto min-w-0">
               {/* Show shorter motto on smaller screens */}
               <span className="block sm:hidden md:hidden">
-                Dla zdrowia pacjentów
+                Celem do którego dążymy, jest zdrowie pacjentów
               </span>
               <span className="hidden sm:block md:block lg:hidden">
-                „Celem do którego dążymy, jest zdrowie pacjentów"
+                Celem do którego dążymy, jest zdrowie pacjentów
               </span>
               <span className="hidden md:block lg:block xl:hidden max-w-xs sm:max-w-sm md:max-w-md">
-                „Celem do którego dążymy, jest zdrowie naszych pacjentów"
+                Celem do którego dążymy, jest zdrowie naszych pacjentów
               </span>
             </p>
           </div>
@@ -334,14 +268,14 @@ export function Header() {
         </NavigationMenu>
 
         {/* Navigation Section - More Responsive */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Button
             variant="outline"
             size="sm"
             className="hidden md:inline-flex rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard text-xs sm:text-sm"
             asChild
           >
-            <a
+            <Link
               href="https://wyniki.spzozparczew.pl:5443/web"
               target="_blank"
               rel="noopener noreferrer"
@@ -352,10 +286,10 @@ export function Header() {
                 className="h-3 w-3 ml-1 lg:h-3.5 lg:w-3.5 lg:ml-1.5"
                 aria-hidden="true"
               />
-            </a>
+            </Link>
           </Button>
 
-          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <Sheet>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
@@ -367,11 +301,22 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent
-              ref={sheetContentRef}
               side="right"
-              onKeyDown={handleKeyDown}
               className="overflow-y-auto p-0 bg-white/80 backdrop-blur-xl dark:bg-black/80 high-contrast:bg-popover high-contrast:backdrop-blur-none transition-all duration-300"
-              style={{ width: calculateSheetWidth() }}
+              style={{
+                width:
+                  fontScale >= 1.5
+                    ? "480px"
+                    : fontScale >= 1.25
+                      ? "400px"
+                      : "320px",
+              }}
+              onOpenAutoFocus={(event) => {
+                event.preventDefault();
+              }}
+              onCloseAutoFocus={(event) => {
+                event.preventDefault();
+              }}
             >
               <SheetTitle className="sr-only">Menu nawigacyjne</SheetTitle>
               <nav
@@ -383,27 +328,24 @@ export function Header() {
                     Działalność Lecznicza
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#poradnie")}
+                    <Link
+                      href="#poradnie"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Poradnie specjalistyczne
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#oddzialy")}
+                    </Link>
+                    <Link
+                      href="#oddzialy"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Oddziały szpitalne
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#diagnostyka")}
+                    </Link>
+                    <Link
+                      href="#diagnostyka"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Diagnostyka
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div>
@@ -411,20 +353,18 @@ export function Header() {
                     Dla Pacjenta
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#dla-pacjentow")}
+                    <Link
+                      href="#dla-pacjentow"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Rejestracja
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#kontakt")}
+                    </Link>
+                    <Link
+                      href="#kontakt"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Telefony kontaktowe
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div>
@@ -432,25 +372,23 @@ export function Header() {
                     O Nas
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#aktualnosci")}
+                    <Link
+                      href="#aktualnosci"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Aktualności
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleMenuLinkClick("#kontakt")}
+                    </Link>
+                    <Link
+                      href="#kontakt"
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Kontakt
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="pt-2 border-t border-outline-variant">
                   <Button asChild className="w-full rounded-full" size="lg">
-                    <a
+                    <Link
                       href="https://wyniki.spzozparczew.pl:5443/web"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -460,7 +398,7 @@ export function Header() {
                         className="h-4 w-4 ml-2"
                         aria-hidden="true"
                       />
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </nav>

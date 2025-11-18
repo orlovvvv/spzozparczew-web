@@ -39,7 +39,7 @@ export default function Home() {
         Przejdź do kontaktu
       </Link>
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col ">
         <HeroSection />
         <div className="relative z-20 bg-background rounded-t-4xl -mt-12 shadow-2xl shadow-foreground high-contrast:shadow-none high-contrast:border-t-2 high-contrast:border-foreground">
           <main id="main-content">
