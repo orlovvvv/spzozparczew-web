@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 interface AuroraTextProps {
@@ -21,9 +21,15 @@ export const AuroraText = memo(
     speed = 1,
   }: AuroraTextProps) => {
     const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
-    // High contrast mode: return solid white text for accessibility
-    if (resolvedTheme === "high-contrast") {
+    // Only render themed version after client hydration
+    useEffect(() => {
+      setMounted(true);
+    }, []);
+
+    // High contrast mode: return solid text for accessibility
+    if (mounted && resolvedTheme === "high-contrast") {
       return (
         <span className={`relative inline-block ${className}`}>
           <span className="text-foreground">{children}</span>
@@ -31,8 +37,9 @@ export const AuroraText = memo(
       );
     }
 
-    // Use darker colors for dark mode
-    const activeColors = resolvedTheme === "dark" ? darkColors : colors;
+    // Use darker colors for dark mode (default to light colors during SSR)
+    const activeColors =
+      mounted && resolvedTheme === "dark" ? darkColors : colors;
 
     const gradientStyle = {
       backgroundImage: `linear-gradient(135deg, ${activeColors.join(", ")}, ${
