@@ -275,7 +275,7 @@ export function Header() {
             className="hidden md:inline-flex rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard text-xs sm:text-sm"
             asChild
           >
-            <a
+            <Link
               href="https://wyniki.spzozparczew.pl:5443/web"
               target="_blank"
               rel="noopener noreferrer"
@@ -286,7 +286,7 @@ export function Header() {
                 className="h-3 w-3 ml-1 lg:h-3.5 lg:w-3.5 lg:ml-1.5"
                 aria-hidden="true"
               />
-            </a>
+            </Link>
           </Button>
 
           <Sheet>
@@ -303,7 +303,20 @@ export function Header() {
             <SheetContent
               side="right"
               className="overflow-y-auto p-0 bg-white/80 backdrop-blur-xl dark:bg-black/80 high-contrast:bg-popover high-contrast:backdrop-blur-none transition-all duration-300"
-              style={{ width: fontScale >= 1.5 ? '480px' : fontScale >= 1.25 ? '400px' : '320px' }}
+              style={{
+                width:
+                  fontScale >= 1.5
+                    ? "480px"
+                    : fontScale >= 1.25
+                      ? "400px"
+                      : "320px",
+              }}
+              onOpenAutoFocus={(event) => {
+                event.preventDefault();
+              }}
+              onCloseAutoFocus={(event) => {
+                event.preventDefault();
+              }}
             >
               <SheetTitle className="sr-only">Menu nawigacyjne</SheetTitle>
               <nav
@@ -375,7 +388,7 @@ export function Header() {
                 </div>
                 <div className="pt-2 border-t border-outline-variant">
                   <Button asChild className="w-full rounded-full" size="lg">
-                    <a
+                    <Link
                       href="https://wyniki.spzozparczew.pl:5443/web"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -385,7 +398,7 @@ export function Header() {
                         className="h-4 w-4 ml-2"
                         aria-hidden="true"
                       />
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </nav>
