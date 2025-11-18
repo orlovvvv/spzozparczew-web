@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Shield } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { mainContact, quickLinks } from "@/data/content/contact-info";
 
@@ -11,23 +12,24 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 dark:bg-primary/20 high-contrast:bg-primary shadow">
-                <span className="text-primary dark:text-primary high-contrast:text-primary-foreground font-semibold text-lg">
-                  SP
-                </span>
+              <div className="relative h-12 w-12 rounded-xl overflow-hidden bg-white/10 dark:bg-white/5 high-contrast:bg-primary shadow flex items-center justify-center">
+                <Image
+                  src="/logo.png"
+                  alt="Logo SPZOZ Parczew"
+                  fill
+                  className="object-contain p-1"
+                  sizes="48px"
+                />
               </div>
               <div>
                 <p className="font-semibold text-foreground">
-                  {mainContact.hospitalName}
+                  {mainContact.fullLegalName}
                 </p>
                 <p className="text-sm font-light text-muted-foreground">
                   {mainContact.hospitalType}
                 </p>
               </div>
             </div>
-            <p className="text-sm font-light text-muted-foreground">
-              {mainContact.fullLegalName}
-            </p>
           </div>
 
           <div>

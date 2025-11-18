@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { Footer } from "@/components/layout/footer";
-import { NewsSection } from "@/components/sections/news/news-section";
-import { HeroSection } from "@/components/sections/hero/hero-section";
-import { ForPatientsSection } from "@/components/sections/patients/for-patients-section";
+import { CareerSection } from "@/components/sections/career/career-section";
 import { ClinicsSection } from "@/components/sections/clinics/clinics-section";
 import { DepartmentsSection } from "@/components/sections/departments/departments-section";
-import { ServicesBentoSection } from "@/components/sections/services/services-bento-section";
-import { CareerSection } from "@/components/sections/career/career-section";
 import { ElectronicServicesSection } from "@/components/sections/electronic-services/electronic-services-section";
+import { HeroSection } from "@/components/sections/hero/hero-section";
+import { NewsSection } from "@/components/sections/news/news-section";
+import { ForPatientsSection } from "@/components/sections/patients/for-patients-section";
+import { ServicesBentoSection } from "@/components/sections/services/services-bento-section";
+import Link from "next/link";
 
 export default function Home() {
   return (
