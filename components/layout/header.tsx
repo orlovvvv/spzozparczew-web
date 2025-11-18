@@ -123,16 +123,25 @@ export function Header() {
 
   // Handle menu link clicks to preserve scroll position
   const handleMenuLinkClick = (href: string) => {
-    // Close menu first
+    // Get target element and store scroll position before closing menu
+    const element = document.querySelector(href);
+    let targetScrollY = 0;
+
+    if (element) {
+      // Calculate target position
+      const elementPosition = element.getBoundingClientRect().top;
+      targetScrollY = window.scrollY + elementPosition;
+    }
+
+    // Store scroll position and close menu
     setIsMenuOpen(false);
 
-    // Navigate to section after a short delay
+    // Restore scroll position after menu closes
     setTimeout(() => {
-      const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        window.scrollTo({ top: targetScrollY, behavior: "smooth" });
       }
-    }, 100);
+    }, 150); // Slightly longer delay to ensure menu is fully closed
   };
 
   // Handle keyboard navigation
