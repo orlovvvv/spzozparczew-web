@@ -118,7 +118,7 @@ export function Header() {
 
         <NavigationMenu
           id="main-navigation"
-          className="hidden lg:flex"
+          className="hidden xl:flex"
           aria-label="Nawigacja główna"
         >
           <NavigationMenuList>
@@ -246,7 +246,7 @@ export function Header() {
               <Button
                 variant="outline"
                 size="icon"
-                className="lg:hidden rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard"
+                className="xl:hidden rounded-full border-white/40 dark:border-white/20 high-contrast:border-foreground bg-white/60 dark:bg-white/10 high-contrast:bg-background backdrop-blur-xl high-contrast:backdrop-blur-none text-foreground hover:bg-white/80 dark:hover:bg-white/20 hover:border-white/50 shadow-sm transition-all duration-medium-2 ease-standard"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Otwórz menu</span>

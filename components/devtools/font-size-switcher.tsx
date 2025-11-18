@@ -98,11 +98,11 @@ export function FontSizeSwitcher() {
   if (!mounted) return null;
 
   const panelContent = (
-    <div className="fixed bottom-4 right-20 z-[9999] flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-20 z-[9999] flex flex-col items-end gap-3 max-sm:bottom-2 max-sm:right-14">
       {isOpen && (
         <div
           className={cn(
-            "w-80 rounded-xl border bg-popover/95 p-4 shadow-2xl backdrop-blur-md",
+            "w-80 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] rounded-xl border bg-popover/95 p-4 shadow-2xl backdrop-blur-md overflow-y-auto",
             "animate-in slide-in-from-bottom-2 fade-in-0 duration-200",
             "dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] dark:border-border/50",
             "high-contrast:border-2 high-contrast:border-foreground",

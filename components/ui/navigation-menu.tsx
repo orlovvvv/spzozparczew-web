@@ -37,7 +37,7 @@ function NavigationMenuList({
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
       className={cn(
-        "group flex flex-1 list-none items-center justify-center gap-1",
+        "group flex flex-1 flex-wrap list-none items-center justify-center gap-2 xl:gap-3",
         className,
       )}
       {...props}
@@ -59,7 +59,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 high-contrast:bg-surface-container-low high-contrast:text-foreground high-contrast:border-2 high-contrast:border-foreground high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:hover:border-primary high-contrast:focus:bg-primary high-contrast:focus:text-primary-foreground high-contrast:data-[state=open]:bg-primary high-contrast:data-[state=open]:text-primary-foreground high-contrast:data-[state=open]:border-primary high-contrast:focus-visible:ring-primary",
+  "group inline-flex min-h-[2.25rem] w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 high-contrast:bg-surface-container-low high-contrast:text-foreground high-contrast:border-2 high-contrast:border-foreground high-contrast:hover:bg-primary high-contrast:hover:text-primary-foreground high-contrast:hover:border-primary high-contrast:focus:bg-primary high-contrast:focus:text-primary-foreground high-contrast:data-[state=open]:bg-primary high-contrast:data-[state=open]:text-primary-foreground high-contrast:data-[state=open]:border-primary high-contrast:focus-visible:ring-primary",
 );
 
 function NavigationMenuTrigger({
