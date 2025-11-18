@@ -116,7 +116,7 @@ export function Header() {
   useEffect(() => {
     if (isMenuOpen && sheetContentRef.current) {
       // Focus first menu item when sheet opens
-      const firstMenuItem = sheetContentRef.current.querySelector("button");
+      const firstMenuItem = sheetContentRef.current.querySelector("a");
       firstMenuItem?.focus();
     }
   }, [isMenuOpen]);
@@ -133,7 +133,7 @@ export function Header() {
       targetScrollY = window.scrollY + elementPosition;
     }
 
-    // Store scroll position and close menu
+    // Close menu immediately
     setIsMenuOpen(false);
 
     // Restore scroll position after menu closes
@@ -384,27 +384,27 @@ export function Header() {
                     Działalność Lecznicza
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <button
-                      type="button"
+                    <Link
+                      href="#poradnie"
                       onClick={() => handleMenuLinkClick("#poradnie")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Poradnie specjalistyczne
-                    </button>
-                    <button
-                      type="button"
+                    </Link>
+                    <Link
+                      href="#oddzialy"
                       onClick={() => handleMenuLinkClick("#oddzialy")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Oddziały szpitalne
-                    </button>
-                    <button
-                      type="button"
+                    </Link>
+                    <Link
+                      href="#diagnostyka"
                       onClick={() => handleMenuLinkClick("#diagnostyka")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Diagnostyka
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div>
@@ -412,20 +412,20 @@ export function Header() {
                     Dla Pacjenta
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <button
-                      type="button"
+                    <Link
+                      href="#dla-pacjentow"
                       onClick={() => handleMenuLinkClick("#dla-pacjentow")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Rejestracja
-                    </button>
-                    <button
-                      type="button"
+                    </Link>
+                    <Link
+                      href="#kontakt"
                       onClick={() => handleMenuLinkClick("#kontakt")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Telefony kontaktowe
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div>
@@ -433,20 +433,20 @@ export function Header() {
                     O Nas
                   </h3>
                   <div className="flex flex-col -mx-3">
-                    <button
-                      type="button"
+                    <Link
+                      href="#aktualnosci"
                       onClick={() => handleMenuLinkClick("#aktualnosci")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Aktualności
-                    </button>
-                    <button
-                      type="button"
+                    </Link>
+                    <Link
+                      href="#kontakt"
                       onClick={() => handleMenuLinkClick("#kontakt")}
                       className="flex items-center min-h-[48px] px-3 text-sm text-muted-foreground hover:text-foreground hover:bg-accent active:bg-accent/80 rounded-lg transition-colors duration-short-4 ease-standard focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset text-left"
                     >
                       Kontakt
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="pt-2 border-t border-outline-variant">
