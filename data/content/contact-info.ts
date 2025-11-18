@@ -56,6 +56,6 @@ export const quickLinks: QuickLink[] = [
     href: "https://eportal.spzozparczew.pl",
     label: "ePortal Pacjenta",
     external: true,
-    ariaLabel: "ePortal Pacjenta (otwiera się w nowej karcie)"
+    ariaLabel: "ePortal Pacjenta (otwiera się w nowej karcie)",
   },
 ];
