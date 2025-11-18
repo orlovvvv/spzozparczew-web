@@ -1237,12 +1237,12 @@ function ElectronicServicesSection() {
               className={`flex flex-col ${isLeft ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-8 lg:gap-16`}
             >
               <div className="flex-1 w-full lg:w-auto">
-                <div className="relative aspect-[4/3] w-full max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-xl dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-lg hover:shadow-xl transition-shadow duration-medium-2 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none high-contrast:border-2 high-contrast:border-foreground high-contrast:shadow-none">
+                <div className="group relative aspect-[4/3] w-full max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-xl dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transform-gpu transition-all duration-medium-2 ease-standard motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none high-contrast:border-2 high-contrast:border-foreground high-contrast:shadow-none">
                   <Image
                     src={service.image}
                     alt={service.imageAlt}
                     fill
-                    className="object-contain p-8"
+                    className="object-cover transition-transform duration-medium-2 ease-standard group-hover:scale-105 motion-reduce:group-hover:scale-100"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 448px"
                   />
                 </div>
