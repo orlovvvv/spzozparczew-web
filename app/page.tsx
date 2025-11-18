@@ -16,15 +16,14 @@ import {
   Heart,
   Mail,
   MapPin,
-  Monitor,
   Phone,
   ScanLine,
   Send,
   Shield,
   Stethoscope,
-  TestTube,
   Users,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { Header } from "@/components/layout/header";
@@ -1185,7 +1184,8 @@ function ElectronicServicesSection() {
       title: "ePortal Pacjenta",
       description:
         "Zarejestruj się online do poradni specjalistycznych. Zarządzaj wizytami, sprawdzaj historię i umawiaj się na wizyty 24/7.",
-      icon: Monitor,
+      image: "/eportal.png",
+      imageAlt: "ePortal Pacjenta - system rejestracji online",
       cta: "Otwórz ePortal",
       url: "https://eportal.spzozparczew.pl",
       imagePosition: "left" as const,
@@ -1194,7 +1194,8 @@ function ElectronicServicesSection() {
       title: "Wyniki badań online",
       description:
         "Sprawdź wyniki badań laboratoryjnych bez wychodzenia z domu. Bezpieczny dostęp do pełnej historii badań.",
-      icon: TestTube,
+      image: "/intelilab.png",
+      imageAlt: "InteliLab - system wyników badań laboratoryjnych",
       cta: "Sprawdź wyniki",
       url: "https://wyniki.spzozparczew.pl:5443/web",
       imagePosition: "right" as const,
@@ -1224,7 +1225,6 @@ function ElectronicServicesSection() {
 
       <div className="space-y-16">
         {services.map((service, index) => {
-          const Icon = service.icon;
           const isLeft = service.imagePosition === "left";
 
           return (
@@ -1237,21 +1237,14 @@ function ElectronicServicesSection() {
               className={`flex flex-col ${isLeft ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-8 lg:gap-16`}
             >
               <div className="flex-1 w-full lg:w-auto">
-                <div className="relative aspect-[4/3] w-full max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-container to-surface-container-low shadow-lg group-hover:shadow-xl transition-shadow duration-medium-2 high-contrast:bg-surface-container-low high-contrast:from-surface-container-low high-contrast:to-surface-container-low high-contrast:border-2 high-contrast:border-foreground high-contrast:shadow-none">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-surface-container-lowest shadow-md mb-4 high-contrast:bg-primary high-contrast:shadow-none">
-                        <Icon
-                          className="h-10 w-10 text-primary high-contrast:text-primary-foreground"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <p className="text-sm font-medium text-muted-foreground">
-                        Podgląd interfejsu
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent high-contrast:bg-none" />
+                <div className="relative aspect-[4/3] w-full max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-xl dark:bg-white/5 border border-white/40 dark:border-white/10 shadow-lg hover:shadow-xl transition-shadow duration-medium-2 high-contrast:bg-surface-container-low high-contrast:backdrop-blur-none high-contrast:border-2 high-contrast:border-foreground high-contrast:shadow-none">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    className="object-contain p-8"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 448px"
+                  />
                 </div>
               </div>
 
