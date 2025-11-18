@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { DevToolsThemeSwitcher } from "@/components/devtools/theme-switcher";
+import { AccessibilityPanel } from "@/components/devtools/accessibility-panel";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { FontSizeProvider } from "@/components/providers/font-size-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -38,8 +39,10 @@ export default function RootLayout({
           themes={["light", "dark", "high-contrast"]}
           disableTransitionOnChange
         >
-          {children}
-          <DevToolsThemeSwitcher />
+          <FontSizeProvider>
+            {children}
+            <AccessibilityPanel />
+          </FontSizeProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -97,6 +97,9 @@
   --duration-medium-2: 300ms;
   --duration-medium-4: 400ms;
   --duration-long-2: 500ms;
+
+  /* WCAG 1.4.4 Font Size Scaling */
+  --font-scale: 1;
   --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
     alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
@@ -179,6 +182,9 @@
   --sidebar-accent-foreground: oklch(0.15 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* WCAG 1.4.4 Font Size Scaling - Default 100% */
+  --font-scale: 1;
 
   /* M3 Primary Tonal Palette (Teal/Green - hue 163.225, chroma 0.145) */
   --primary-0: oklch(0 0.145 163.225);
@@ -303,6 +309,37 @@
   --outline-variant: oklch(0.7 0 0);
 }
 
+/* WCAG 1.4.4: Font Size Scaling Presets */
+.font-size-small {
+  --font-scale: 0.875;
+}
+
+.font-size-normal {
+  --font-scale: 1;
+}
+
+.font-size-large {
+  --font-scale: 1.125;
+}
+
+.font-size-xlarge {
+  --font-scale: 1.25;
+}
+
+.font-size-xxlarge {
+  --font-scale: 1.5;
+}
+
+.font-size-xxxlarge {
+  --font-scale: 2;
+}
+
+/* Apply font scaling to root element */
+html {
+  /* Scale base font size while respecting user browser preferences */
+  font-size: calc(100% * var(--font-scale));
+}
+
 /* View Transition API for animated theme toggler */
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -316,6 +353,19 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* WCAG 1.4.4: Prevent content overflow at 200% scaling */
+  * {
+    min-width: 0;
+  }
+
+  /* Ensure media scales proportionally */
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
   }
 }
 
