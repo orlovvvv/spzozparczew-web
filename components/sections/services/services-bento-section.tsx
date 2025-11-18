@@ -5,9 +5,11 @@ import { useReducedMotion } from "framer-motion";
 import { Phone } from "lucide-react";
 import { BentoGrid, BentoServiceCard } from "@/components/ui/bento-grid";
 import { servicesCategories, servicesTexts } from "@/data/content/services";
+import { useFontSize } from "@/hooks/use-font-size";
 
 export function ServicesBentoSection() {
   const prefersReducedMotion = useReducedMotion();
+  const { getResponsiveClasses } = useFontSize();
 
   return (
     <section
@@ -36,7 +38,11 @@ export function ServicesBentoSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <BentoGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <BentoGrid
+          className={getResponsiveClasses(
+            "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+          )}
+        >
           {servicesCategories.map((category, index) => {
             const { Icon, title, subtitle, phone, background, services } =
               category;
@@ -48,7 +54,7 @@ export function ServicesBentoSection() {
                 subtitle={subtitle}
                 phone={phone}
                 Icon={Icon}
-                className={`col-span-1 ${index === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
+                className={`col-span-1 ${index === 2 ? getResponsiveClasses("md:col-span-2 lg:col-span-1") : ""}`}
                 background={
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${background}`}

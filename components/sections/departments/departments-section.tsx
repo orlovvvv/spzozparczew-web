@@ -5,9 +5,11 @@ import { useReducedMotion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { departments, departmentsTexts } from "@/data/content/departments";
+import { useFontSize } from "@/hooks/use-font-size";
 
 export function DepartmentsSection() {
   const prefersReducedMotion = useReducedMotion();
+  const { getResponsiveClasses } = useFontSize();
 
   return (
     <section
@@ -30,7 +32,11 @@ export function DepartmentsSection() {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        className={getResponsiveClasses(
+          "grid sm:grid-cols-2 lg:grid-cols-3 gap-4",
+        )}
+      >
         {departments.map((dept, index) => {
           const Icon = dept.icon;
           return (

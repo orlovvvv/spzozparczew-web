@@ -2,31 +2,33 @@ import { MapPin, Phone, Mail, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { mainContact, quickLinks } from "@/data/content/contact-info";
+import { useFontSize } from "@/hooks/use-font-size";
 
 export function Footer() {
+  const { getResponsiveClasses } = useFontSize();
+
   return (
     <footer id="kontakt" className="relative overflow-hidden">
       <div className="absolute inset-0 bg-primary-container dark:bg-background high-contrast:bg-surface-container-low" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.2)_0%,transparent_60%)] dark:bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.25)_0%,transparent_60%)] high-contrast:bg-none" />
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className={getResponsiveClasses("grid md:grid-cols-3 gap-8")}>
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="relative h-12 w-12 rounded-xl overflow-hidden bg-white/10 dark:bg-white/5 high-contrast:bg-primary shadow flex items-center justify-center">
+              <div className="relative shrink-0 h-20 w-20 rounded-xl overflow-hidden bg-white/10 dark:bg-white/5 high-contrast:bg-primary shadow flex items-center justify-center">
                 <Image
                   src="/logo.png"
                   alt="Logo SPZOZ Parczew"
                   fill
-                  className="object-contain p-1"
-                  sizes="48px"
+                  className=" object-fill"
                 />
               </div>
               <div>
-                <p className="font-semibold text-foreground">
+                <p className="font-semibold text-foreground text-sm">
                   {mainContact.fullLegalName}
                 </p>
-                <p className="text-sm font-light text-muted-foreground">
-                  {mainContact.hospitalType}
+                <p className="text-xs font-light text-muted-foreground italic ">
+                  {mainContact.hospitalMotto}
                 </p>
               </div>
             </div>
