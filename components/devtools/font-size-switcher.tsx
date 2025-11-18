@@ -224,10 +224,10 @@ export function FontSizeSwitcher() {
         className={cn(
           "h-12 w-12 rounded-full shadow-lg transition-all duration-300",
           "hover:shadow-xl hover:scale-110 active:scale-95",
-          "bg-background/95 backdrop-blur-sm",
+          "backdrop-blur-sm",
           "dark:shadow-[0_0_30px_rgba(0,0,0,0.3)]",
           "high-contrast:border-2 high-contrast:border-foreground",
-          isOpen && "rotate-90",
+          isOpen ? "bg-primary text-primary-foreground" : "bg-background/95",
         )}
         aria-label={
           isOpen
@@ -235,12 +235,7 @@ export function FontSizeSwitcher() {
             : "Otwórz panel rozmiaru czcionki"
         }
       >
-        <Type
-          className={cn(
-            "h-5 w-5 transition-transform duration-300",
-            isOpen && "rotate-90",
-          )}
-        />
+        <Type className="h-5 w-5" />
         <span className="sr-only">
           {isOpen
             ? "Zamknij panel rozmiaru czcionki"
