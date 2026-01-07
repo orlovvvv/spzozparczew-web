@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oddziały i Poradnie - SPZOZ Parczew</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Inter', sans-serif;
+font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+}
+.smooth-transition {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style></head>
+  <body class="bg-white text-slate-600 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+    <!-- Top Utility Bar -->
+    <div class="bg-slate-900 text-slate-300 text-[11px] font-medium border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-1.5 text-emerald-400">
+            <i data-lucide="phone" width="12" height="12"></i>
+            Centrala: 83 355 21 02
+          </span>
+          <span class="hidden sm:flex items-center gap-1.5">
+            <i data-lucide="mail" width="12" height="12"></i>
+            sekretariat@spzozparczew.pl
+          </span>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 border-r border-slate-700 pr-4">
+            <span class="uppercase tracking-wider opacity-60">Dostępność:</span>
+            <button class="hover:text-white smooth-transition">A+</button>
+            <button class="hover:text-white smooth-transition">A-</button>
+            <button class="hover:text-white smooth-transition">
+              <i data-lucide="contrast" width="12" height="12"></i>
+            </button>
+          </div>
+          <div class="flex gap-3">
+            <a href="#" class="hover:text-white smooth-transition">
+              <i data-lucide="facebook" width="14" height="14"></i>
+            </a>
+            <a href="#" class="hover:text-white smooth-transition">
+              <i data-lucide="youtube" width="14" height="14"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="#" class="relative w-8 h-8 flex items-center justify-center">
+            <i data-lucide="heart" class="text-emerald-500 fill-emerald-500/20" width="32" height="32" stroke-width="2"></i>
+            <div class="absolute -right-1 -bottom-1 bg-white rounded-full p-0.5">
+              <div class="w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"></div>
+            </div>
+          </a>
+          <div class="flex flex-col">
+            <span class="text-slate-900 font-semibold tracking-tight text-sm leading-none">
+              SPZOZ Parczew
+            </span>
+            <span class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">
+              Samodzielny Publiczny Zakład Opieki Zdrowotnej
+            </span>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="#" class="text-sm font-medium text-emerald-700 smooth-transition">
+            Oddziały i Poradnie
+          </a>
+          <a href="#" class="text-sm font-medium text-slate-600 hover:text-emerald-600 smooth-transition">
+            Dla Pacjenta
+          </a>
+          <a href="#" class="text-sm font-medium text-slate-600 hover:text-emerald-600 smooth-transition">
+            Aktualności
+          </a>
+          <a href="#" class="text-sm font-medium text-slate-600 hover:text-emerald-600 smooth-transition">
+            Kontakt
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button class="hidden sm:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-emerald-600 px-3 py-2 rounded-md hover:bg-emerald-50/50 smooth-transition">
+            <i data-lucide="search" width="16" height="16" stroke-width="1.5"></i>
+            Szukaj
+          </button>
+          <button class="bg-emerald-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-emerald-700 smooth-transition tracking-tight shadow-sm shadow-emerald-600/20 ring-1 ring-emerald-600/10 flex items-center gap-2">
+            <i data-lucide="user" width="16" height="16" stroke-width="1.5"></i>
+            e-Portal Pacjenta
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Alert Section -->
+    <section class="relative bg-white py-6 border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-red-50 border border-red-100 rounded-xl p-4 md:p-6 flex flex-col md:flex-row gap-4 md:gap-6 items-start shadow-sm">
+          <div class="shrink-0 w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+            <i data-lucide="alert-triangle" width="20" height="20"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-lg md:text-xl font-semibold text-red-700 mb-1 md:mb-2 tracking-tight">
+              UWAGA! Zmiana wejścia do szpitala
+            </h2>
+            <p class="text-sm md:text-base text-slate-600 leading-relaxed mb-3 md:mb-4">
+              W związku z pracami remontowo-budowlanymi w budynku A, od dnia
+              <span class="font-semibold text-slate-900">05.08.2025 r.</span>
+              wejście do szpitala oraz na oddziały odbywa się przez budynek
+              Geriatrii i Rehabilitacji (nowe skrzydło z tyłu szpitala).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Header for Content -->
+    <section class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mb-4">
+            Oddziały i Poradnie Specjalistyczne
+          </h1>
+          <p class="text-lg text-slate-500 leading-relaxed">
+            Świadczymy kompleksowe usługi medyczne w ramach lecznictwa
+            szpitalnego oraz ambulatoryjnego. Poniżej znajdziesz listę naszych
+            oddziałów oraz poradni.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ODDZIAŁY LIST -->
+    <section class="pb-16 bg-white" id="oddzialy">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
+            <i data-lucide="building-2" width="20" height="20"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-slate-900 tracking-tight">
+            Oddziały Szpitalne
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Item 1 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="activity" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Anestezjologii i Intensywnej Terapii
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Całodobowa opieka nad pacjentami w stanie zagrożenia życia.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 2 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="scissors" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Chirurgiczno - Urazowy
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Zabiegi operacyjne, chirurgia urazowa oraz ginekologia.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 3 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="baby" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Dziecięcy
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Kompleksowa diagnostyka i leczenie pacjentów pediatrycznych.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 4 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="sun" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Terapii Uzależnienia od Alkoholu
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Terapia grupowa i indywidualna w trybie dziennym.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 5 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="users" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Geriatryczny
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Specjalistyczna opieka nad osobami w podeszłym wieku.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 6 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="heart-pulse" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Chorób Wewnętrznych
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Diagnostyka i leczenie schorzeń internistycznych.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 7 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="heart-handshake" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Oddział Leczenia Uzależnień
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Stacjonarna terapia uzależnień i wsparcie psychologiczne.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 8 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="accessibility" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Rehabilitacyjny
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Rehabilitacja ogólnoustrojowa i neurologiczna.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 9 (SOR) -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-red-500/30 hover:shadow-lg hover:shadow-red-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden ring-1 ring-red-50">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-red-50 border border-red-100 flex items-center justify-center text-red-500 group-hover:bg-red-100 group-hover:text-red-600 transition-colors duration-300">
+                <i data-lucide="ambulance" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-red-700 transition-colors duration-300 leading-tight">
+                  Szpitalny Oddział Ratunkowy
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Pomoc w stanach nagłego zagrożenia życia 24/7.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-red-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 10 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="home" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Zakład Opiekuńczo-Leczniczy
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Długoterminowa opieka medyczna i pielęgnacyjna.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+
+          <!-- Item 11 -->
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-900/5 smooth-transition flex items-center justify-between gap-4 relative overflow-hidden">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-emerald-50 group-hover:text-emerald-600 group-hover:border-emerald-100 transition-colors duration-300">
+                <i data-lucide="heart-handshake" width="20" height="20"></i>
+              </div>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors duration-300 leading-tight">
+                  Hospicjum Domowe
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-0.5 truncate">
+                  Opieka paliatywna sprawowana w warunkach domowych.
+                </p>
+              </div>
+            </div>
+            <div class="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out text-emerald-500 shrink-0 transform-gpu">
+              <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORADNIE I JEDNOSTKI LIST -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200" id="poradnie">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 bg-blue-100 text-blue-600 rounded-lg">
+            <i data-lucide="stethoscope" width="20" height="20"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-slate-900 tracking-tight">
+            Poradnie i Jednostki Diagnostyczne
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="scissors" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Chirurgii Ogólnej
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Konsultacje i zabiegi chirurgiczne
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="bone" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Urazowo-Ortopedyczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Leczenie urazów i schorzeń kości
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="baby" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Ginekologiczno-Położnicza
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Zdrowie kobiet i prowadzenie ciąży
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="heart-pulse" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Kardiologiczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Diagnostyka i leczenie chorób serca
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="brain-circuit" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Neurologiczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Schorzenia układu nerwowego
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="eye" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Okulistyczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Badanie wzroku i leczenie chorób oczu
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="ear" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Otolaryngologiczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Laryngologia dorosłych i dzieci
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="brain" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Zdrowia Psychicznego
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Pomoc psychologiczna i psychiatryczna
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="droplet" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Diabetologiczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Leczenie cukrzycy i edukacja
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="wind" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Gruźlicy i Chorób Płuc
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Pulmonologia i spirometria
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="accessibility" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Reumatologiczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Leczenie chorób reumatycznych
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="briefcase-medical" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Medycyny Pracy
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Badania profilaktyczne pracowników
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="scan-face" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Dermatologiczna
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Dermatologia i wenerologia
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="pill" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Poradnia Terapii Uzależnień
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Leczenie uzależnienia od alkoholu
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="scan" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Diagnostyka Obrazowa
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Pracownia RTG, USG i Tomografii
+              </p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-500/30 hover:shadow-md smooth-transition flex items-center gap-4">
+            <div class="w-10 h-10 shrink-0 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 smooth-transition">
+              <i data-lucide="flask-conical" width="20" height="20"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-900 group-hover:text-blue-700">
+                Laboratorium Analityczne
+              </h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                Punkt pobrań i analityka medyczna
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-200" id="kontakt">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div class="col-span-1">
+            <div class="flex items-center gap-2 mb-4">
+              <i data-lucide="heart" class="text-emerald-600 fill-emerald-600/20" width="24" height="24"></i>
+              <span class="text-slate-900 font-bold tracking-tight text-sm">
+                SPZOZ Parczew
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 leading-relaxed mb-4">
+              ul. Kościelna 136
+              <br>
+              21-200 Parczew
+              <br>
+              NIP: 539-13-17-640
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-slate-900 text-sm mb-4">Szpital</h4>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  O nas
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Dyrekcja
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Struktura organizacyjna
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Projekty unijne
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-slate-900 text-sm mb-4">
+              Dla Pacjenta
+            </h4>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Rejestracja Online
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Prawa Pacjenta
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Odwiedziny
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-emerald-600 transition-colors">
+                  Cennik
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-slate-900 text-sm mb-4">Kontakt</h4>
+            <ul class="space-y-3 text-xs text-slate-500">
+              <li class="flex items-center gap-2">
+                <i data-lucide="phone" width="14" height="14" class="text-emerald-600 shrink-0"></i>
+                Centrala: 83 355 21 02
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="mail" width="14" height="14" class="text-emerald-600 shrink-0"></i>
+                sekretariat@spzozparczew.pl
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="clock" width="14" height="14" class="text-emerald-600 shrink-0"></i>
+                Administracja: 7:25 - 15:00
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-[10px] text-slate-400">
+            © 2025 SPZOZ Parczew. Wszelkie prawa zastrzeżone.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="text-[10px] text-slate-500 hover:text-slate-900">
+              Polityka Prywatności
+            </a>
+            <a href="#" class="text-[10px] text-slate-500 hover:text-slate-900">
+              Mapa Strony
+            </a>
+            <a href="#" class="text-[10px] text-slate-500 hover:text-slate-900">
+              Deklaracja Dostępności
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons({
+        attrs: {
+          'stroke-width': 1.5
+        }
+      });
+    </script>
+  
+</body></html>
