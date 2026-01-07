@@ -29,6 +29,16 @@ import { slugField } from 'payload'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
+  labels: {
+    singular: {
+      pl: 'Aktualność',
+      en: 'Post',
+    },
+    plural: {
+      pl: 'Aktualności',
+      en: 'Posts',
+    },
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -69,6 +79,10 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'title',
       type: 'text',
+      label: {
+        pl: 'Tytuł',
+        en: 'Title',
+      },
       required: true,
     },
     {
@@ -79,6 +93,10 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'heroImage',
               type: 'upload',
+              label: {
+                pl: 'Zdjęcie główne',
+                en: 'Hero Image',
+              },
               relationTo: 'media',
             },
             {
@@ -100,13 +118,20 @@ export const Posts: CollectionConfig<'posts'> = {
               required: true,
             },
           ],
-          label: 'Content',
+          label: {
+            pl: 'Treść',
+            en: 'Content',
+          },
         },
         {
           fields: [
             {
               name: 'relatedPosts',
               type: 'relationship',
+              label: {
+                pl: 'Powiązane artykuły',
+                en: 'Related Posts',
+              },
               admin: {
                 position: 'sidebar',
               },
@@ -123,6 +148,10 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'categories',
               type: 'relationship',
+              label: {
+                pl: 'Kategorie',
+                en: 'Categories',
+              },
               admin: {
                 position: 'sidebar',
               },
@@ -130,7 +159,10 @@ export const Posts: CollectionConfig<'posts'> = {
               relationTo: 'categories',
             },
           ],
-          label: 'Meta',
+          label: {
+            pl: 'Metadane',
+            en: 'Meta',
+          },
         },
         {
           name: 'meta',
@@ -164,6 +196,10 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'publishedAt',
       type: 'date',
+      label: {
+        pl: 'Data publikacji',
+        en: 'Published At',
+      },
       admin: {
         date: {
           pickerAppearance: 'dayAndTime',
@@ -184,6 +220,10 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'authors',
       type: 'relationship',
+      label: {
+        pl: 'Autorzy',
+        en: 'Authors',
+      },
       admin: {
         position: 'sidebar',
       },
@@ -196,6 +236,10 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'populatedAuthors',
       type: 'array',
+      label: {
+        pl: 'Autorzy (wypełnieni)',
+        en: 'Populated Authors',
+      },
       access: {
         update: () => false,
       },
@@ -211,6 +255,10 @@ export const Posts: CollectionConfig<'posts'> = {
         {
           name: 'name',
           type: 'text',
+          label: {
+            pl: 'Imię i nazwisko',
+            en: 'Name',
+          },
         },
       ],
     },

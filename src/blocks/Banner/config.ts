@@ -8,16 +8,42 @@ import {
 
 export const Banner: Block = {
   slug: 'banner',
+  labels: {
+    singular: {
+      pl: 'Baner',
+      en: 'Banner',
+    },
+    plural: {
+      pl: 'Banery',
+      en: 'Banners',
+    },
+  },
   fields: [
     {
       name: 'style',
       type: 'select',
+      label: {
+        pl: 'Styl',
+        en: 'Style',
+      },
       defaultValue: 'info',
       options: [
-        { label: 'Info', value: 'info' },
-        { label: 'Warning', value: 'warning' },
-        { label: 'Error', value: 'error' },
-        { label: 'Success', value: 'success' },
+        {
+          label: { pl: 'Informacja', en: 'Info' },
+          value: 'info',
+        },
+        {
+          label: { pl: 'Ostrzeżenie', en: 'Warning' },
+          value: 'warning',
+        },
+        {
+          label: { pl: 'Błąd', en: 'Error' },
+          value: 'error',
+        },
+        {
+          label: { pl: 'Sukces', en: 'Success' },
+          value: 'success',
+        },
       ],
       required: true,
     },

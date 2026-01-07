@@ -4,13 +4,22 @@ import deepMerge from '@/utilities/deepMerge'
 
 export type LinkAppearances = 'default' | 'outline'
 
-export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
+export const appearanceOptions: Record<
+  LinkAppearances,
+  { label: { pl: string; en: string }; value: string }
+> = {
   default: {
-    label: 'Default',
+    label: {
+      pl: 'Domyślny',
+      en: 'Default',
+    },
     value: 'default',
   },
   outline: {
-    label: 'Outline',
+    label: {
+      pl: 'Kontur',
+      en: 'Outline',
+    },
     value: 'outline',
   },
 }
@@ -25,6 +34,10 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   const linkResult: GroupField = {
     name: 'link',
     type: 'group',
+    label: {
+      pl: 'Link',
+      en: 'Link',
+    },
     admin: {
       hideGutter: true,
     },
@@ -35,6 +48,10 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
           {
             name: 'type',
             type: 'radio',
+            label: {
+              pl: 'Typ linku',
+              en: 'Link Type',
+            },
             admin: {
               layout: 'horizontal',
               width: '50%',
@@ -42,11 +59,17 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
             defaultValue: 'reference',
             options: [
               {
-                label: 'Internal link',
+                label: {
+                  pl: 'Link wewnętrzny',
+                  en: 'Internal link',
+                },
                 value: 'reference',
               },
               {
-                label: 'Custom URL',
+                label: {
+                  pl: 'Własny URL',
+                  en: 'Custom URL',
+                },
                 value: 'custom',
               },
             ],
@@ -60,7 +83,10 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
               },
               width: '50%',
             },
-            label: 'Open in new tab',
+            label: {
+              pl: 'Otwórz w nowej karcie',
+              en: 'Open in new tab',
+            },
           },
         ],
       },
@@ -74,8 +100,11 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'reference',
       },
-      label: 'Document to link to',
-      relationTo: ['pages', 'posts'],
+      label: {
+        pl: 'Dokument do linkowania',
+        en: 'Document to link to',
+      },
+      relationTo: ['posts'],
       required: true,
     },
     {
@@ -84,7 +113,10 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'custom',
       },
-      label: 'Custom URL',
+      label: {
+        pl: 'Własny URL',
+        en: 'Custom URL',
+      },
       required: true,
     },
   ]
@@ -108,7 +140,10 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
           admin: {
             width: '50%',
           },
-          label: 'Label',
+          label: {
+            pl: 'Etykieta',
+            en: 'Label',
+          },
           required: true,
         },
       ],
@@ -127,8 +162,15 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
     linkResult.fields.push({
       name: 'appearance',
       type: 'select',
+      label: {
+        pl: 'Wygląd',
+        en: 'Appearance',
+      },
       admin: {
-        description: 'Choose how the link should be rendered.',
+        description: {
+          pl: 'Wybierz styl wyświetlania linku.',
+          en: 'Choose how the link should be rendered.',
+        },
       },
       defaultValue: 'default',
       options: appearanceOptionsToUse,

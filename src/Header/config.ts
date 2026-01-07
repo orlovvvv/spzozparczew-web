@@ -5,6 +5,10 @@ import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
   slug: 'header',
+  label: {
+    pl: 'Nagłówek',
+    en: 'Header',
+  },
   access: {
     read: () => true,
   },
@@ -12,6 +16,10 @@ export const Header: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
+      label: {
+        pl: 'Elementy nawigacji',
+        en: 'Navigation Items',
+      },
       fields: [
         link({
           appearances: false,

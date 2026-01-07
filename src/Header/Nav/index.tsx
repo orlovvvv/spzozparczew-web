@@ -1,25 +1,58 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import type { Header as HeaderType } from '@/payload-types'
 
-import { CMSLink } from '@/components/Link'
-import Link from 'next/link'
-import { SearchIcon } from 'lucide-react'
+import { cn } from '@/utilities/ui'
 
-export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
-  const navItems = data?.navItems || []
+interface HeaderNavProps {
+  data: HeaderType
+  mobile?: boolean
+}
+
+const navLinks = [
+  { label: 'O Szpitalu', href: '/o-nas' },
+  { label: 'Dla Pacjenta', href: '/dla-pacjenta' },
+  { label: 'Aktualności', href: '/aktualnosci' },
+  { label: 'Kariera', href: '/kariera' },
+  { label: 'Przetargi', href: '/przetargi' },
+  { label: 'Kontakt', href: '/#kontakt' },
+]
+
+export const HeaderNav: React.FC<HeaderNavProps> = ({ data: _data, mobile = false }) => {
+  const pathname = usePathname()
 
   return (
-    <nav className="flex gap-3 items-center">
-      {navItems.map(({ link }, i) => {
-        return <CMSLink key={i} {...link} appearance="link" />
+    <nav
+      className={cn(
+        mobile ? 'flex flex-col gap-1' : 'flex gap-1 items-center',
+      )}
+      aria-label="Nawigacja główna"
+    >
+      {navLinks.map(({ label, href }) => {
+        const isActive = pathname === href || (href !== '/' && pathname.startsWith(href.replace('/#', '/')))
+
+        return (
+          <Link
+            key={href}
+            href={href}
+            className={cn(
+              'text-sm font-medium transition-colors',
+              mobile
+                ? 'px-3 py-2 rounded-md hover:bg-primary/5 block'
+                : 'px-3 py-2 rounded-md hover:bg-primary/5',
+              isActive
+                ? 'text-primary'
+                : 'text-muted-foreground hover:text-primary',
+            )}
+          >
+            {label}
+          </Link>
+        )
       })}
-      <Link href="/search">
-        <span className="sr-only">Search</span>
-        <SearchIcon className="w-5 text-primary" />
-      </Link>
     </nav>
   )
 }

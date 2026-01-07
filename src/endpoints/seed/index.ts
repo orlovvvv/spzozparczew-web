@@ -1,8 +1,6 @@
-import type { CollectionSlug, GlobalSlug, Payload, PayloadRequest, File } from 'payload'
+import type { CollectionSlug, Payload, PayloadRequest, File } from 'payload'
 
 import { contactForm as contactFormData } from './contact-form'
-import { contact as contactPageData } from './contact-page'
-import { home } from './home'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
 import { imageHero1 } from './image-hero-1'
@@ -13,14 +11,11 @@ import { post3 } from './post-3'
 const collections: CollectionSlug[] = [
   'categories',
   'media',
-  'pages',
   'posts',
   'forms',
   'form-submissions',
   'search',
 ]
-
-const globals: GlobalSlug[] = ['header', 'footer']
 
 const categories = ['Technology', 'News', 'Finance', 'Design', 'Software', 'Engineering']
 
@@ -43,21 +38,21 @@ export const seed = async ({
   // the custom `/api/seed` endpoint does not
   payload.logger.info(`— Clearing collections and globals...`)
 
-  // clear the database
-  await Promise.all(
-    globals.map((global) =>
-      payload.updateGlobal({
-        slug: global,
-        data: {
-          navItems: [],
-        },
-        depth: 0,
-        context: {
-          disableRevalidate: true,
-        },
-      }),
-    ),
-  )
+  // clear the database - reset header and footer nav items
+  await Promise.all([
+    payload.updateGlobal({
+      slug: 'header',
+      data: { navItems: [] },
+      depth: 0,
+      context: { disableRevalidate: true },
+    }),
+    payload.updateGlobal({
+      slug: 'footer',
+      data: { navItems: [] },
+      depth: 0,
+      context: { disableRevalidate: true },
+    }),
+  ])
 
   await Promise.all(
     collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),
@@ -98,7 +93,7 @@ export const seed = async ({
     ),
   ])
 
-  const [demoAuthor, image1Doc, image2Doc, image3Doc, imageHomeDoc] = await Promise.all([
+  const [demoAuthor, image1Doc, image2Doc, image3Doc, _imageHomeDoc] = await Promise.all([
     payload.create({
       collection: 'users',
       data: {
@@ -194,26 +189,11 @@ export const seed = async ({
 
   payload.logger.info(`— Seeding contact form...`)
 
-  const contactForm = await payload.create({
+  await payload.create({
     collection: 'forms',
     depth: 0,
     data: contactFormData,
   })
-
-  payload.logger.info(`— Seeding pages...`)
-
-  const [_, contactPage] = await Promise.all([
-    payload.create({
-      collection: 'pages',
-      depth: 0,
-      data: home({ heroImage: imageHomeDoc, metaImage: image2Doc }),
-    }),
-    payload.create({
-      collection: 'pages',
-      depth: 0,
-      data: contactPageData({ contactForm: contactForm }),
-    }),
-  ])
 
   payload.logger.info(`— Seeding globals...`)
 
@@ -225,18 +205,8 @@ export const seed = async ({
           {
             link: {
               type: 'custom',
-              label: 'Posts',
-              url: '/posts',
-            },
-          },
-          {
-            link: {
-              type: 'reference',
-              label: 'Contact',
-              reference: {
-                relationTo: 'pages',
-                value: contactPage.id,
-              },
+              label: 'Aktualności',
+              url: '/aktualnosci',
             },
           },
         ],

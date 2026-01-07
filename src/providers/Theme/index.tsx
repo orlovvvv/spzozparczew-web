@@ -39,13 +39,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (themeIsValid(preference)) {
       themeToSet = preference
-    } else {
-      const implicitPreference = getImplicitPreference()
-
-      if (implicitPreference) {
-        themeToSet = implicitPreference
-      }
     }
+    // Note: We intentionally don't auto-detect from system preferences
+    // Users can manually toggle the theme using the TopBar button
 
     document.documentElement.setAttribute('data-theme', themeToSet)
     setThemeState(themeToSet)

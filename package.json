@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.70.0",
+    "@payloadcms/db-sqlite": "3.70.0",
     "@payloadcms/live-preview-react": "3.70.0",
     "@payloadcms/next": "3.70.0",
     "@payloadcms/plugin-form-builder": "3.70.0",
@@ -31,11 +32,15 @@
     "@payloadcms/plugin-search": "3.70.0",
     "@payloadcms/plugin-seo": "3.70.0",
     "@payloadcms/richtext-lexical": "3.70.0",
+    "@payloadcms/translations": "^3.70.0",
     "@payloadcms/ui": "3.70.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.1.13",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
@@ -52,8 +57,7 @@
     "react-hook-form": "7.45.4",
     "sharp": "0.34.2",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "@payloadcms/db-sqlite": "3.70.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -75,6 +79,7 @@
     "postcss": "^8.4.38",
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.3",
+    "tsx": "^4.21.0",
     "typescript": "5.7.3",
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.3"

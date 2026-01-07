@@ -5,6 +5,10 @@ import { revalidateFooter } from './hooks/revalidateFooter'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  label: {
+    pl: 'Stopka',
+    en: 'Footer',
+  },
   access: {
     read: () => true,
   },
@@ -12,6 +16,10 @@ export const Footer: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
+      label: {
+        pl: 'Elementy nawigacji',
+        en: 'Navigation Items',
+      },
       fields: [
         link({
           appearances: false,
