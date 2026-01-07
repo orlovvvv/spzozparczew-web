@@ -474,7 +474,10 @@ export const PublicProcurements: CollectionConfig<'publicProcurements'> = {
         beforeChange: [
           ({ siblingData }) => {
             if (siblingData.publishDate) {
-              return new Date(siblingData.publishDate).getFullYear()
+              const date = new Date(siblingData.publishDate)
+              if (!isNaN(date.getTime())) {
+                return date.getFullYear()
+              }
             }
             return new Date().getFullYear()
           },

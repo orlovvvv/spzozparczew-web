@@ -31,6 +31,7 @@ export default async function HomePage() {
     collection: 'posts',
     depth: 1,
     limit: 3,
+    overrideAccess: false,
     sort: '-publishedAt',
     where: {
       _status: {
@@ -44,6 +45,7 @@ export default async function HomePage() {
     collection: 'jobs',
     depth: 1,
     limit: 3,
+    overrideAccess: false,
     sort: '-publishedAt',
     where: {
       _status: {
@@ -60,6 +62,7 @@ export default async function HomePage() {
     collection: 'publicProcurements',
     depth: 1,
     limit: 3,
+    overrideAccess: false,
     sort: '-publishDate',
     where: {
       _status: {
