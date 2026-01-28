@@ -60,7 +60,7 @@ export const procurementsData: ProcurementData[] = [
     contactPerson: 'Specjalista ds. zamówień publicznych — Mariusz Kaczmarek',
     contactPhone: '83 355 21 07',
     contactEmail: 'zamowienia@spzozparczew.pl',
-    status: 'active',
+    procurementStatus: 'active',
     meta: {
       title: 'Dostawa odczynników laboratoryjnych | SPZOZ Parczew',
       description:
@@ -92,7 +92,7 @@ export const procurementsData: ProcurementData[] = [
     contactPerson: 'Specjalista ds. zamówień publicznych — Mariusz Kaczmarek',
     contactPhone: '83 355 21 07',
     contactEmail: 'zamowienia@spzozparczew.pl',
-    status: 'active',
+    procurementStatus: 'active',
     meta: {
       title: 'Usługi żywienia pacjentów | SPZOZ Parczew',
       description:
@@ -124,7 +124,7 @@ export const procurementsData: ProcurementData[] = [
     contactPerson: 'Specjalista ds. zamówień publicznych — Mariusz Kaczmarek',
     contactPhone: '83 355 21 07',
     contactEmail: 'zamowienia@spzozparczew.pl',
-    status: 'active',
+    procurementStatus: 'active',
     meta: {
       title: 'Sprzęt medyczny jednorazowy | SPZOZ Parczew',
       description:
@@ -154,7 +154,7 @@ export const procurementsData: ProcurementData[] = [
     contactPerson: 'Specjalista ds. zamówień publicznych — Mariusz Kaczmarek',
     contactPhone: '83 355 21 07',
     contactEmail: 'zamowienia@spzozparczew.pl',
-    status: 'closed',
+    procurementStatus: 'closed',
     meta: {
       title: 'Dostawa leków — zakończone | SPZOZ Parczew',
       description:
@@ -184,7 +184,7 @@ export const procurementsData: ProcurementData[] = [
     contactPerson: 'Specjalista ds. zamówień publicznych — Mariusz Kaczmarek',
     contactPhone: '83 355 21 07',
     contactEmail: 'zamowienia@spzozparczew.pl',
-    status: 'cancelled',
+    procurementStatus: 'cancelled',
     meta: {
       title: 'Klimatyzacja — unieważnione | SPZOZ Parczew',
       description:

@@ -126,7 +126,7 @@ export const jobsData: JobData[] = [
     contactPerson: 'Dział Kadr — Anna Borkowska',
     contactPhone: '83 355 21 05',
     contactEmail: 'kadry@spzozparczew.pl',
-    status: 'active',
+    recruitmentStatus: 'active',
     deadline: '2026-03-31T00:00:00.000Z',
     meta: {
       title: 'Lekarz internista — oferta pracy | SPZOZ Parczew',
@@ -181,7 +181,7 @@ export const jobsData: JobData[] = [
     contactPerson: 'Dział Kadr — Anna Borkowska',
     contactPhone: '83 355 21 05',
     contactEmail: 'kadry@spzozparczew.pl',
-    status: 'active',
+    recruitmentStatus: 'active',
     deadline: '2026-02-28T00:00:00.000Z',
     meta: {
       title: 'Pielęgniarka — Oddział Chirurgiczny | SPZOZ Parczew',
@@ -236,7 +236,7 @@ export const jobsData: JobData[] = [
     contactPerson: 'Dział Kadr — Anna Borkowska',
     contactPhone: '83 355 21 05',
     contactEmail: 'kadry@spzozparczew.pl',
-    status: 'active',
+    recruitmentStatus: 'active',
     deadline: '2026-03-15T00:00:00.000Z',
     meta: {
       title: 'Fizjoterapeuta — oferta pracy | SPZOZ Parczew',
@@ -290,7 +290,7 @@ export const jobsData: JobData[] = [
     contactPerson: 'Dział Kadr — Anna Borkowska',
     contactPhone: '83 355 21 05',
     contactEmail: 'kadry@spzozparczew.pl',
-    status: 'active',
+    recruitmentStatus: 'active',
     deadline: '2026-02-15T00:00:00.000Z',
     meta: {
       title: 'Diagnosta laboratoryjny — oferta pracy | SPZOZ Parczew',

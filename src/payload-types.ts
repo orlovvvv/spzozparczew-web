@@ -481,7 +481,7 @@ export interface Job {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  status?: ('active' | 'closed' | 'on-hold') | null;
+  recruitmentStatus?: ('active' | 'closed' | 'on-hold') | null;
   deadline?: string | null;
   publishedAt?: string | null;
   /**
@@ -559,7 +559,7 @@ export interface PublicProcurement {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  status?: ('active' | 'closed' | 'cancelled') | null;
+  procurementStatus?: ('active' | 'closed' | 'cancelled') | null;
   year?: number | null;
   publishedAt?: string | null;
   /**
@@ -1285,7 +1285,7 @@ export interface JobsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
-  status?: T;
+  recruitmentStatus?: T;
   deadline?: T;
   publishedAt?: T;
   generateSlug?: T;
@@ -1333,7 +1333,7 @@ export interface PublicProcurementsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
-  status?: T;
+  procurementStatus?: T;
   year?: T;
   publishedAt?: T;
   generateSlug?: T;

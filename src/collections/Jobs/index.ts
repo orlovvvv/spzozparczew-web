@@ -407,7 +407,7 @@ export const Jobs: CollectionConfig<'jobs'> = {
       ],
     },
     {
-      name: 'status',
+      name: 'recruitmentStatus',
       type: 'select',
       label: {
         pl: 'Status naboru',

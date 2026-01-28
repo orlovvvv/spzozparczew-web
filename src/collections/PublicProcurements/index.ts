@@ -434,7 +434,7 @@ export const PublicProcurements: CollectionConfig<'publicProcurements'> = {
       ],
     },
     {
-      name: 'status',
+      name: 'procurementStatus',
       type: 'select',
       label: {
         pl: 'Status',
