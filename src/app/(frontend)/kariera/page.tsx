@@ -38,7 +38,7 @@ export default async function JobsListingPage({ searchParams }: PageProps) {
         equals: 'published',
       },
       ...(status && status !== 'all' && {
-        status: {
+        recruitmentStatus: {
           equals: status,
         },
       }),
@@ -50,7 +50,7 @@ export default async function JobsListingPage({ searchParams }: PageProps) {
     collection: 'jobs',
     where: {
       _status: { equals: 'published' },
-      status: { equals: 'active' },
+      recruitmentStatus: { equals: 'active' },
     },
   })
 

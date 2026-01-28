@@ -93,7 +93,7 @@ export default async function ProcurementPage({ params }: Args) {
     title,
     procurementNumber,
     procedureType,
-    status,
+    procurementStatus,
     publishDate,
     deadlineDate,
     openingDate,
@@ -144,8 +144,8 @@ export default async function ProcurementPage({ params }: Args) {
                 <span className="text-lg font-semibold text-primary">
                   {procurementNumber}
                 </span>
-                <Badge variant={statusVariants[status || 'active']}>
-                  {statusLabels[status || 'active']}
+                <Badge variant={statusVariants[procurementStatus || 'active']}>
+                  {statusLabels[procurementStatus || 'active']}
                 </Badge>
                 {euProject && (
                   <div className="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-full">
@@ -177,7 +177,7 @@ export default async function ProcurementPage({ params }: Args) {
               {deadlineDate && (
                 <div
                   className={`rounded-xl p-4 ${
-                    status === 'active' && !expired && daysLeft !== null && daysLeft <= 7
+                    procurementStatus === 'active' && !expired && daysLeft !== null && daysLeft <= 7
                       ? 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800'
                       : 'bg-slate-50 dark:bg-slate-800/50'
                   }`}
@@ -187,7 +187,7 @@ export default async function ProcurementPage({ params }: Args) {
                       size={14}
                       weight="bold"
                       className={
-                        status === 'active' && !expired && daysLeft !== null && daysLeft <= 7
+                        procurementStatus === 'active' && !expired && daysLeft !== null && daysLeft <= 7
                           ? 'text-amber-600'
                           : 'text-primary'
                       }
@@ -196,14 +196,14 @@ export default async function ProcurementPage({ params }: Args) {
                   </div>
                   <p
                     className={`text-sm font-medium ${
-                      status === 'active' && !expired && daysLeft !== null && daysLeft <= 7
+                      procurementStatus === 'active' && !expired && daysLeft !== null && daysLeft <= 7
                         ? 'text-amber-700 dark:text-amber-400'
                         : 'text-foreground'
                     }`}
                   >
                     {formatDate(deadlineDate, 'dateTime')}
                   </p>
-                  {status === 'active' && !expired && daysLeft !== null && daysLeft <= 14 && (
+                  {procurementStatus === 'active' && !expired && daysLeft !== null && daysLeft <= 14 && (
                     <p className="text-xs text-amber-600 mt-1">
                       {daysLeft === 0 ? 'Ostatni dzień!' : `Pozostało ${daysLeft} dni`}
                     </p>
@@ -300,7 +300,7 @@ export default async function ProcurementPage({ params }: Args) {
           <aside className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
               {/* Countdown (for active procurements) */}
-              {status === 'active' && deadlineDate && !expired && (
+              {procurementStatus === 'active' && deadlineDate && !expired && (
                 <div className="bg-primary text-primary-foreground rounded-xl p-6 text-center">
                   <p className="text-xs uppercase tracking-wider opacity-80 mb-2">
                     Do końca składania ofert

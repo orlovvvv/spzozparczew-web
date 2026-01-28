@@ -84,7 +84,7 @@ export default async function JobPage({ params }: Args) {
     employmentType,
     salary,
     deadline,
-    status,
+    recruitmentStatus,
     description,
     requirements,
     responsibilities,
@@ -120,8 +120,8 @@ export default async function JobPage({ params }: Args) {
           <div className="lg:col-span-2">
             {/* Header */}
             <div className="mb-8">
-              <Badge variant={statusVariants[status || 'active']} className="mb-4">
-                {statusLabels[status || 'active']}
+              <Badge variant={statusVariants[recruitmentStatus || 'active']} className="mb-4">
+                {statusLabels[recruitmentStatus || 'active']}
               </Badge>
               <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
                 {position || title}
@@ -165,7 +165,7 @@ export default async function JobPage({ params }: Args) {
             </div>
 
             {/* Deadline Warning */}
-            {deadline && status === 'active' && (
+            {deadline && recruitmentStatus === 'active' && (
               <div
                 className={`flex items-center gap-3 p-4 rounded-xl mb-8 ${
                   expired

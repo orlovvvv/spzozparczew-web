@@ -52,7 +52,7 @@ export const JobCard: React.FC<JobCardProps> = ({
     location,
     employmentType,
     deadline,
-    status,
+    recruitmentStatus,
   } = job
 
   const daysLeft = getDaysUntil(deadline)
@@ -98,8 +98,8 @@ export const JobCard: React.FC<JobCardProps> = ({
           )}
         </div>
         <div className="col-span-6 md:col-span-1 flex items-center justify-end">
-          <Badge variant={statusVariants[status || 'active']}>
-            {statusLabels[status || 'active']}
+          <Badge variant={statusVariants[recruitmentStatus || 'active']}>
+            {statusLabels[recruitmentStatus || 'active']}
           </Badge>
         </div>
       </Link>
@@ -117,8 +117,8 @@ export const JobCard: React.FC<JobCardProps> = ({
     >
       <div className="flex items-start justify-between gap-4 mb-4">
         <div>
-          <Badge variant={statusVariants[status || 'active']} className="mb-3">
-            {statusLabels[status || 'active']}
+          <Badge variant={statusVariants[recruitmentStatus || 'active']} className="mb-3">
+            {statusLabels[recruitmentStatus || 'active']}
           </Badge>
           <h3 className="font-semibold text-foreground text-lg group-hover:text-primary transition-colors">
             {position || title}

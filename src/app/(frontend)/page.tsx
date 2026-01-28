@@ -53,7 +53,7 @@ export default async function HomePage() {
       _status: {
         equals: 'published',
       },
-      status: {
+      recruitmentStatus: {
         equals: 'active',
       },
     },
@@ -484,16 +484,16 @@ export default async function HomePage() {
                       <td className="px-6 py-4 text-right">
                         <Badge
                           variant={
-                            proc.status === 'active'
+                            proc.procurementStatus === 'active'
                               ? 'success'
-                              : proc.status === 'cancelled'
+                              : proc.procurementStatus === 'cancelled'
                                 ? 'error'
                                 : 'secondary'
                           }
                         >
-                          {proc.status === 'active'
+                          {proc.procurementStatus === 'active'
                             ? 'W toku'
-                            : proc.status === 'cancelled'
+                            : proc.procurementStatus === 'cancelled'
                               ? 'Unieważniony'
                               : 'Zakończony'}
                         </Badge>

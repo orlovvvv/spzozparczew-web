@@ -51,14 +51,14 @@ export const Jobs: CollectionConfig<'jobs'> = {
     position: true,
     department: true,
     deadline: true,
-    status: true,
+    recruitmentStatus: true,
     meta: {
       image: true,
       description: true,
     },
   },
   admin: {
-    defaultColumns: ['title', 'position', 'status', 'deadline', 'updatedAt'],
+    defaultColumns: ['title', 'position', 'recruitmentStatus', 'deadline', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({

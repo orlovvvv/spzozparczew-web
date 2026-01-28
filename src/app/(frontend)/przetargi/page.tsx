@@ -39,7 +39,7 @@ export default async function ProcurementsListingPage({ searchParams }: PageProp
         equals: 'published',
       },
       ...(status && status !== 'all' && {
-        status: {
+        procurementStatus: {
           equals: status,
         },
       }),
@@ -86,7 +86,7 @@ export default async function ProcurementsListingPage({ searchParams }: PageProp
     collection: 'publicProcurements',
     where: {
       _status: { equals: 'published' },
-      status: { equals: 'active' },
+      procurementStatus: { equals: 'active' },
     },
   })
 

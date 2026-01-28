@@ -52,7 +52,7 @@ export const PublicProcurements: CollectionConfig<'publicProcurements'> = {
     title: true,
     slug: true,
     procurementNumber: true,
-    status: true,
+    procurementStatus: true,
     deadlineDate: true,
     publishDate: true,
     meta: {
@@ -61,7 +61,7 @@ export const PublicProcurements: CollectionConfig<'publicProcurements'> = {
     },
   },
   admin: {
-    defaultColumns: ['procurementNumber', 'title', 'status', 'deadlineDate', 'updatedAt'],
+    defaultColumns: ['procurementNumber', 'title', 'procurementStatus', 'deadlineDate', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({

@@ -50,7 +50,7 @@ export const ProcurementCard: React.FC<ProcurementCardProps> = ({
     slug,
     procurementNumber,
     procedureType,
-    status,
+    procurementStatus,
     publishDate,
     deadlineDate,
     euProject,
@@ -106,8 +106,8 @@ export const ProcurementCard: React.FC<ProcurementCardProps> = ({
           )}
         </div>
         <div className="col-span-12 md:col-span-1 flex items-center justify-end">
-          <Badge variant={statusVariants[status || 'active']}>
-            {statusLabels[status || 'active']}
+          <Badge variant={statusVariants[procurementStatus || 'active']}>
+            {statusLabels[procurementStatus || 'active']}
           </Badge>
         </div>
       </Link>
@@ -135,8 +135,8 @@ export const ProcurementCard: React.FC<ProcurementCardProps> = ({
               </span>
             )}
           </div>
-          <Badge variant={statusVariants[status || 'active']}>
-            {statusLabels[status || 'active']}
+          <Badge variant={statusVariants[procurementStatus || 'active']}>
+            {statusLabels[procurementStatus || 'active']}
           </Badge>
         </div>
       </div>
@@ -157,17 +157,17 @@ export const ProcurementCard: React.FC<ProcurementCardProps> = ({
         {deadlineDate && (
           <span className={cn(
             'flex items-center gap-1.5',
-            status === 'active' && !expired && daysLeft !== null && daysLeft <= 7
+            procurementStatus === 'active' && !expired && daysLeft !== null && daysLeft <= 7
               ? 'text-amber-600 font-medium'
               : ''
           )}>
-            <Clock size={14} weight="bold" className={status === 'active' && !expired && daysLeft !== null && daysLeft <= 7 ? 'text-amber-600' : 'text-primary'} />
+            <Clock size={14} weight="bold" className={procurementStatus === 'active' && !expired && daysLeft !== null && daysLeft <= 7 ? 'text-amber-600' : 'text-primary'} />
             Termin: {formatDate(deadlineDate, 'short')}
           </span>
         )}
       </div>
 
-      {status === 'active' && deadlineDate && !expired && daysLeft !== null && daysLeft <= 7 && (
+      {procurementStatus === 'active' && deadlineDate && !expired && daysLeft !== null && daysLeft <= 7 && (
         <div className="text-xs text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-3 py-2 rounded-lg mb-4">
           {daysLeft === 0 ? 'Ostatni dzień!' : `Pozostało ${daysLeft} dni`}
         </div>
