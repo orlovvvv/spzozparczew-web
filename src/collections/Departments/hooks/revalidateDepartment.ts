@@ -17,7 +17,7 @@ export const revalidateDepartment: CollectionAfterChangeHook<Department> = ({
 
       revalidatePath(path)
       revalidatePath('/dla-pacjenta')
-      revalidateTag('departments-sitemap')
+      revalidateTag('departments-sitemap', 'max')
     }
 
     // If the department was previously published, we need to revalidate the old path
@@ -28,7 +28,7 @@ export const revalidateDepartment: CollectionAfterChangeHook<Department> = ({
 
       revalidatePath(oldPath)
       revalidatePath('/dla-pacjenta')
-      revalidateTag('departments-sitemap')
+      revalidateTag('departments-sitemap', 'max')
     }
   }
   return doc
@@ -43,7 +43,7 @@ export const revalidateDepartmentDelete: CollectionAfterDeleteHook<Department> =
 
     revalidatePath(path)
     revalidatePath('/dla-pacjenta')
-    revalidateTag('departments-sitemap')
+    revalidateTag('departments-sitemap', 'max')
   }
 
   return doc

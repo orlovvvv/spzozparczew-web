@@ -17,7 +17,7 @@ export const revalidateClinic: CollectionAfterChangeHook<Clinic> = ({
 
       revalidatePath(path)
       revalidatePath('/dla-pacjenta')
-      revalidateTag('clinics-sitemap')
+      revalidateTag('clinics-sitemap', 'max')
     }
 
     // If the clinic was previously published, we need to revalidate the old path
@@ -28,7 +28,7 @@ export const revalidateClinic: CollectionAfterChangeHook<Clinic> = ({
 
       revalidatePath(oldPath)
       revalidatePath('/dla-pacjenta')
-      revalidateTag('clinics-sitemap')
+      revalidateTag('clinics-sitemap', 'max')
     }
   }
   return doc
@@ -43,7 +43,7 @@ export const revalidateClinicDelete: CollectionAfterDeleteHook<Clinic> = ({
 
     revalidatePath(path)
     revalidatePath('/dla-pacjenta')
-    revalidateTag('clinics-sitemap')
+    revalidateTag('clinics-sitemap', 'max')
   }
 
   return doc

@@ -24,6 +24,24 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  onInit: async (payload) => {
+    const existingUsers = await payload.find({
+      collection: 'users',
+      limit: 1,
+    })
+
+    if (existingUsers.totalDocs === 0) {
+      await payload.create({
+        collection: 'users',
+        data: {
+          name: 'Admin',
+          email: 'admin@spzozparczew.pl',
+          password: 'admin',
+        },
+      })
+      payload.logger.info('— Created default admin user (admin@spzozparczew.pl)')
+    }
+  },
   i18n: {
     supportedLanguages: { pl },
     fallbackLanguage: 'pl',

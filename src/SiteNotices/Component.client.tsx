@@ -102,7 +102,7 @@ export function SiteNoticesClient({ notices }: SiteNoticesClientProps) {
       aria-label="Ważne komunikaty"
     >
       <div className="container">
-        <Accordion type="single" defaultValue="notice-0" collapsible className="space-y-3">
+        <Accordion defaultValue={[0]} className="space-y-3">
           {notices.map((notice, index) => {
             const config = getVariantConfig(notice.variant)
             const IconComponent = config.icon
@@ -110,7 +110,6 @@ export function SiteNoticesClient({ notices }: SiteNoticesClientProps) {
             return (
               <AccordionItem
                 key={notice.id || index}
-                value={`notice-${index}`}
                 className={cn('border rounded-xl overflow-hidden', config.containerClass)}
               >
                 <AccordionTrigger

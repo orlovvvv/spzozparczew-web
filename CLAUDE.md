@@ -10,25 +10,25 @@ This is a Payload CMS website for SPZOZ Parczew (healthcare facility), built on 
 
 ```bash
 # Development
-pnpm dev              # Start development server (http://localhost:3000)
-pnpm build            # Build for production (includes sitemap generation)
-pnpm start            # Start production server
+bun dev              # Start development server (http://localhost:3000)
+bun build            # Build for production (includes sitemap generation)
+bun start            # Start production server
 
 # Testing
-pnpm test             # Run all tests (integration + e2e)
-pnpm test:int         # Run integration tests with Vitest
-pnpm test:e2e         # Run e2e tests with Playwright
+bun test             # Run all tests (integration + e2e)
+bun test:int         # Run integration tests with Vitest
+bun test:e2e         # Run e2e tests with Playwright
 
 # Code Quality
-pnpm lint             # Run ESLint
-pnpm lint:fix         # Run ESLint with auto-fix
+bun lint             # Run ESLint
+bun lint:fix         # Run ESLint with auto-fix
 tsc --noEmit          # Type check without emitting
 
 # Payload CLI
-pnpm generate:types      # Regenerate TypeScript types after schema changes
-pnpm generate:importmap  # Regenerate import map after component changes
-pnpm payload migrate:create  # Create a new migration (for production DB)
-pnpm payload migrate        # Run pending migrations
+bun generate:types      # Regenerate TypeScript types after schema changes
+bun generate:importmap  # Regenerate import map after component changes
+bun payload migrate:create  # Create a new migration (for production DB)
+bun payload migrate        # Run pending migrations
 ```
 
 ## Architecture
@@ -110,8 +110,8 @@ design/                     # Static HTML mockups - reference designs for implem
    ```
 
 ### After Schema Changes
-1. Run `pnpm generate:types` to regenerate `src/payload-types.ts`
-2. Run `pnpm generate:importmap` if you added/modified custom components
+1. Run `bun generate:types` to regenerate `src/payload-types.ts`
+2. Run `bun generate:importmap` if you added/modified custom components
 3. Run `tsc --noEmit` to verify TypeScript correctness
 
 ### Component Definition

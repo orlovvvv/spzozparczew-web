@@ -6,7 +6,7 @@ export const revalidateSiteNotices: GlobalAfterChangeHook = ({ doc, req: { paylo
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating site-notices`)
 
-    revalidateTag('global_site-notices')
+    revalidateTag('global_site-notices', 'max')
   }
 
   return doc

@@ -68,7 +68,7 @@ export default async function ClinicPage({ params }: Args) {
 
         {/* Back Link */}
         <Link
-          href="/dla-pacjenta"
+          href="/poradnie"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
         >
           <ArrowLeft size={16} weight="bold" />

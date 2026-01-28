@@ -1,6 +1,87 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tw-animate-css';
+
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+/* Dark mode via data-theme attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Safelist: ensure dynamic classes are always generated */
+@source inline("
+  lg:col-span-4 lg:col-span-6 lg:col-span-8 lg:col-span-12
+  border-border bg-card
+  border-error bg-error/30
+  border-success bg-success/30
+  border-warning bg-warning/30
+");
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-raleway), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 @layer base {
   h1,
@@ -14,85 +95,103 @@
   }
 
   :root {
-    --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
 
-    --primary: 160 84% 39%;
-    --primary-foreground: 0 0% 100%;
+    --primary: oklch(0.648 0.2 131.684);
+    --primary-foreground: oklch(0.986 0.031 120.757);
 
-    --secondary: 160 84% 96%;
-    --secondary-foreground: 160 84% 25%;
+    --secondary: oklch(0.967 0.001 286.375);
+    --secondary-foreground: oklch(0.21 0.006 285.885);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
 
-    --accent: 160 84% 96%;
-    --accent-foreground: 160 84% 25%;
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: oklch(0.58 0.22 27);
+    --destructive-foreground: oklch(0.985 0 0);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 160 84% 39%;
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    --success: 160 84% 39%;
-    --warning: 38 92% 50%;
-    --error: 0 84.2% 60.2%;
+    --success: oklch(0.648 0.2 131.684);
+    --warning: oklch(0.75 0.183 55.934);
+    --error: oklch(0.58 0.22 27);
 
-    --emerald-50: 152 81% 96%;
-    --emerald-100: 149 80% 90%;
-    --emerald-200: 152 76% 80%;
-    --emerald-300: 156 72% 67%;
-    --emerald-400: 158 64% 52%;
-    --emerald-500: 160 84% 39%;
-    --emerald-600: 161 94% 30%;
-    --emerald-700: 163 94% 24%;
-    --emerald-800: 163 88% 20%;
-    --emerald-900: 164 86% 16%;
-    --emerald-950: 166 91% 9%;
+    --chart-1: oklch(0.871 0.15 154.449);
+    --chart-2: oklch(0.723 0.219 149.579);
+    --chart-3: oklch(0.627 0.194 149.214);
+    --chart-4: oklch(0.527 0.154 150.069);
+    --chart-5: oklch(0.448 0.119 151.328);
+
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.648 0.2 131.684);
+    --sidebar-primary-foreground: oklch(0.986 0.031 120.757);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
   }
 
   [data-theme='dark'] {
-    --background: 164 86% 4%;
-    --foreground: 152 81% 96%;
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
 
-    --card: 164 86% 6%;
-    --card-foreground: 152 81% 96%;
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
 
-    --popover: 164 86% 6%;
-    --popover-foreground: 152 81% 96%;
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
 
-    --primary: 160 84% 45%;
-    --primary-foreground: 164 86% 4%;
+    --primary: oklch(0.648 0.2 131.684);
+    --primary-foreground: oklch(0.986 0.031 120.757);
 
-    --secondary: 163 88% 12%;
-    --secondary-foreground: 152 81% 96%;
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
 
-    --muted: 163 88% 12%;
-    --muted-foreground: 156 20% 65%;
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
 
-    --accent: 163 88% 12%;
-    --accent-foreground: 152 81% 96%;
+    --accent: oklch(0.371 0 0);
+    --accent-foreground: oklch(0.985 0 0);
 
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
 
-    --border: 163 88% 16%;
-    --input: 163 88% 16%;
-    --ring: 160 84% 45%;
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
 
-    --success: 160 84% 45%;
-    --warning: 38 92% 60%;
-    --error: 0 62.8% 50%;
+    --success: oklch(0.648 0.2 131.684);
+    --warning: oklch(0.75 0.183 55.934);
+    --error: oklch(0.704 0.191 22.216);
+
+    --chart-1: oklch(0.871 0.15 154.449);
+    --chart-2: oklch(0.723 0.219 149.579);
+    --chart-3: oklch(0.627 0.194 149.214);
+    --chart-4: oklch(0.527 0.154 150.069);
+    --chart-5: oklch(0.448 0.119 151.328);
+
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.768 0.233 130.85);
+    --sidebar-primary-foreground: oklch(0.986 0.031 120.757);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
   }
 }
 
@@ -101,7 +200,31 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    @apply bg-background text-foreground min-h-screen flex flex-col;
+  }
+}
+
+/* Container utility */
+@utility container {
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: 1rem;
+
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 86rem) {
+    max-width: 86rem;
   }
 }
 

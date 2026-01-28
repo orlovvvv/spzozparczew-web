@@ -17,7 +17,7 @@ export const revalidateJob: CollectionAfterChangeHook<Job> = ({
 
       revalidatePath(path)
       revalidatePath('/kariera')
-      revalidateTag('jobs-sitemap')
+      revalidateTag('jobs-sitemap', 'max')
     }
 
     // If the job was previously published, we need to revalidate the old path
@@ -28,7 +28,7 @@ export const revalidateJob: CollectionAfterChangeHook<Job> = ({
 
       revalidatePath(oldPath)
       revalidatePath('/kariera')
-      revalidateTag('jobs-sitemap')
+      revalidateTag('jobs-sitemap', 'max')
     }
   }
   return doc
@@ -43,7 +43,7 @@ export const revalidateJobDelete: CollectionAfterDeleteHook<Job> = ({
 
     revalidatePath(path)
     revalidatePath('/kariera')
-    revalidateTag('jobs-sitemap')
+    revalidateTag('jobs-sitemap', 'max')
   }
 
   return doc

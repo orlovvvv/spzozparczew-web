@@ -15,7 +15,7 @@ export async function Footer() {
                 SPZOZ Parczew
               </span>
             </Link>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               ul. Kościelna 136
               <br />
               21-200 Parczew
@@ -27,7 +27,7 @@ export async function Footer() {
           {/* Szpital */}
           <div>
             <h4 className="font-semibold text-foreground text-sm mb-4">Szpital</h4>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>
                 <Link href="/o-nas" className="hover:text-primary transition-colors">
                   O nas
@@ -54,7 +54,7 @@ export async function Footer() {
           {/* Dla Pacjenta */}
           <div>
             <h4 className="font-semibold text-foreground text-sm mb-4">Dla Pacjenta</h4>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>
                 <Link href="/rejestracja" className="hover:text-primary transition-colors">
                   Rejestracja Online
@@ -81,7 +81,7 @@ export async function Footer() {
           {/* Kontakt */}
           <div>
             <h4 className="font-semibold text-foreground text-sm mb-4">Kontakt</h4>
-            <ul className="space-y-3 text-xs text-muted-foreground">
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone size={14} weight="bold" className="text-primary shrink-0" />
                 <a href="tel:+48833552102" className="hover:text-primary transition-colors">
@@ -104,17 +104,17 @@ export async function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[10px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} SPZOZ Parczew. Wszelkie prawa zastrzeżone.
           </p>
           <div className="flex gap-4">
-            <Link href="/polityka-prywatnosci" className="text-[10px] text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/polityka-prywatnosci" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Polityka Prywatności
             </Link>
-            <Link href="/mapa-strony" className="text-[10px] text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/mapa-strony" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Mapa Strony
             </Link>
-            <Link href="/deklaracja-dostepnosci" className="text-[10px] text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/deklaracja-dostepnosci" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Deklaracja Dostępności
             </Link>
           </div>

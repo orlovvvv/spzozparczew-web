@@ -9,6 +9,8 @@ import {
   CaretRight,
   Newspaper,
   ArrowRight,
+  UserCircle,
+  Briefcase,
 } from '@phosphor-icons/react/dist/ssr'
 
 import { SiteNotices } from '@/SiteNotices/Component'
@@ -76,6 +78,62 @@ export default async function HomePage() {
       {/* Site Notices - CMS managed */}
       <SiteNotices />
 
+      {/* Action Cards */}
+      <section className="pt-8 pb-4">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link
+              href="/przyjecie"
+              className="group flex items-center gap-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                <UserCircle size={24} weight="duotone" />
+              </div>
+              <div>
+                <h2 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                  Pacjent
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Znajdź poradnię, przyjęcie, odwiedziny
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/kariera"
+              className="group flex items-center gap-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
+                <Briefcase size={24} weight="duotone" />
+              </div>
+              <div>
+                <h2 className="text-base font-semibold text-foreground group-hover:text-blue-600 transition-colors">
+                  Kariera
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Dołącz do naszego zespołu
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/laboratorium/wyniki"
+              className="group flex items-center gap-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-200 dark:group-hover:bg-emerald-900/50 transition-colors">
+                <Flask size={24} weight="duotone" />
+              </div>
+              <div>
+                <h2 className="text-base font-semibold text-foreground group-hover:text-emerald-600 transition-colors">
+                  Wyniki Online
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Sprawdź wyniki badań
+                </p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="relative pt-8 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center md:text-left">
@@ -90,10 +148,17 @@ export default async function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4 md:justify-start justify-center">
               <Link
-                href="/dla-pacjenta"
+                href="/oddzialy"
                 className="inline-flex items-center gap-2 text-sm font-medium text-white bg-slate-900 dark:bg-slate-100 dark:text-slate-900 px-6 py-3 rounded-lg hover:bg-slate-800 dark:hover:bg-white transition-colors shadow-lg shadow-slate-900/10"
               >
-                Oddziały i Poradnie Specjalistyczne
+                Oddziały Szpitalne
+                <ArrowRight size={16} weight="bold" />
+              </Link>
+              <Link
+                href="/dla-pacjenta"
+                className="inline-flex items-center gap-2 text-sm font-medium text-foreground bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+              >
+                Informacje dla Pacjenta
                 <ArrowRight size={16} weight="bold" />
               </Link>
             </div>
@@ -110,7 +175,7 @@ export default async function HomePage() {
                   <h3 className="font-semibold text-foreground text-lg tracking-tight">
                     Rejestracja Telefoniczna
                   </h3>
-                  <p className="text-muted-foreground text-xs font-medium">Czynne pn-pt 7:00 - 15:00</p>
+                  <p className="text-muted-foreground text-sm font-medium">Czynne pn-pt 7:00 - 15:00</p>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-x-12 gap-y-6">
@@ -186,7 +251,7 @@ export default async function HomePage() {
                   <h3 className="font-semibold text-foreground text-lg tracking-tight">
                     Laboratorium
                   </h3>
-                  <p className="text-muted-foreground text-xs font-medium">Strefa Pacjenta</p>
+                  <p className="text-muted-foreground text-sm font-medium">Strefa Pacjenta</p>
                 </div>
               </div>
               <nav className="space-y-1">
@@ -243,10 +308,10 @@ export default async function HomePage() {
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground tracking-tight mb-2">
+              <h2 className="text-3xl font-semibold text-foreground tracking-tight mb-2">
                 Aktualności i Komunikaty
               </h2>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-base">
                 Najnowsze informacje z życia szpitala.
               </p>
             </div>
@@ -283,10 +348,10 @@ export default async function HomePage() {
         <div className="container">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground tracking-tight">
+              <h2 className="text-3xl font-semibold text-foreground tracking-tight">
                 Kariera i Praca
               </h2>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="text-base text-muted-foreground mt-1">
                 Aktualne oferty zatrudnienia w naszym szpitalu
               </p>
             </div>
@@ -367,10 +432,10 @@ export default async function HomePage() {
         <div className="container">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground tracking-tight">
+              <h2 className="text-3xl font-semibold text-foreground tracking-tight">
                 Postępowania Przetargowe
               </h2>
-              <p className="text-sm text-muted-foreground mt-1">Biuletyn Informacji Publicznej</p>
+              <p className="text-base text-muted-foreground mt-1">Biuletyn Informacji Publicznej</p>
             </div>
             <Link
               href="/przetargi"

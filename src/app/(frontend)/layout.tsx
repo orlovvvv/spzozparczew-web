@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
-import { Noto_Sans } from 'next/font/google'
+import { Raleway } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -16,24 +16,23 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const notoSans = Noto_Sans({
+const raleway = Raleway({
   subsets: ['latin', 'latin-ext'],
-  variable: '--font-noto-sans',
+  variable: '--font-raleway',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistMono.variable)} lang="pl" suppressHydrationWarning>
+    <html className={cn(GeistMono.variable, raleway.variable)} lang="pl" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body className={notoSans.className}>
+      <body className={raleway.className}>
         <Providers>
           <AdminBar
             adminBarProps={{

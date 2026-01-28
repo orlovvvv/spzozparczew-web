@@ -17,7 +17,7 @@ export const revalidateProcurement: CollectionAfterChangeHook<PublicProcurement>
 
       revalidatePath(path)
       revalidatePath('/przetargi')
-      revalidateTag('procurements-sitemap')
+      revalidateTag('procurements-sitemap', 'max')
     }
 
     // If the procurement was previously published, we need to revalidate the old path
@@ -28,7 +28,7 @@ export const revalidateProcurement: CollectionAfterChangeHook<PublicProcurement>
 
       revalidatePath(oldPath)
       revalidatePath('/przetargi')
-      revalidateTag('procurements-sitemap')
+      revalidateTag('procurements-sitemap', 'max')
     }
   }
   return doc
@@ -43,7 +43,7 @@ export const revalidateProcurementDelete: CollectionAfterDeleteHook<PublicProcur
 
     revalidatePath(path)
     revalidatePath('/przetargi')
-    revalidateTag('procurements-sitemap')
+    revalidateTag('procurements-sitemap', 'max')
   }
 
   return doc

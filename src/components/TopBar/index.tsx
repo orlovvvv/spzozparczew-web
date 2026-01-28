@@ -8,6 +8,9 @@ import {
   Moon,
   FacebookLogo,
   YoutubeLogo,
+  ArrowSquareOut,
+  CalendarCheck,
+  Flask,
 } from '@phosphor-icons/react'
 import { cn } from '@/utilities/ui'
 import { useTheme } from '@/providers/Theme'
@@ -38,7 +41,7 @@ export const TopBar: React.FC<TopBarProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        'bg-slate-900 text-slate-400 text-[11px] font-medium border-b border-slate-800',
+        'bg-slate-900 text-slate-400 text-xs font-medium border-b border-slate-800',
         className,
       )}
     >
@@ -62,6 +65,32 @@ export const TopBar: React.FC<TopBarProps> = ({ className }) => {
           </a>
         </div>
         <div className="flex items-center gap-4">
+          <nav className="hidden md:flex items-center gap-3 border-r border-slate-700 pr-4" aria-label="Szybkie linki">
+            <a
+              href="https://spzozparczew.bip.lubelskie.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 hover:text-white transition-colors"
+              aria-label="Biuletyn Informacji Publicznej (otwiera się w nowej karcie)"
+            >
+              <ArrowSquareOut size={11} weight="bold" aria-hidden="true" />
+              <span>BIP</span>
+            </a>
+            <a
+              href="/e-portal"
+              className="flex items-center gap-1 hover:text-white transition-colors"
+            >
+              <CalendarCheck size={11} weight="bold" aria-hidden="true" />
+              <span>E-Rejestracja</span>
+            </a>
+            <a
+              href="/laboratorium/wyniki"
+              className="flex items-center gap-1 hover:text-white transition-colors"
+            >
+              <Flask size={11} weight="bold" aria-hidden="true" />
+              <span>Wyniki Badań</span>
+            </a>
+          </nav>
           <div className="flex items-center gap-2 border-r border-slate-700 pr-4">
             <span className="uppercase tracking-wider opacity-60 hidden sm:inline">Dostępność:</span>
             <button
